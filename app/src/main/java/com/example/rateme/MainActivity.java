@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 // Hier kannst du die gescannten Daten verwenden
                 String scannedData = result.getContents();
                 // Verarbeite die gescannten Daten hier weiter
-                // Zum Beispiel: zeige die gescannten Daten in einem Toast an
                 Toast.makeText(this, "Gescannter Barcode: " + scannedData, Toast.LENGTH_LONG).show();
             } else {
                 // Handle den Fall, dass der Scan abgebrochen wurde
