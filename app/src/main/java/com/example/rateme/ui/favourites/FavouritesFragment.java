@@ -1,4 +1,4 @@
-package com.example.rateme.ui.settings;
+package com.example.rateme.ui.favourites;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.rateme.databinding.FragmentSettingsBinding;
+import com.example.rateme.databinding.FragmentFavouritesBinding;
 
-public class SettingsFragment extends Fragment {
+public class FavouritesFragment extends Fragment {
 
-    private FragmentSettingsBinding binding;
+    private FragmentFavouritesBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SettingsViewModel settingsViewModel =
-                new ViewModelProvider(this).get(SettingsViewModel.class);
+        FavouritesViewModel favouritesViewModel =
+                new ViewModelProvider(this).get(FavouritesViewModel.class);
 
-        binding = FragmentSettingsBinding.inflate(inflater, container, false);
+        binding = FragmentFavouritesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSettings;
-        settingsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textFavourites;
+        favouritesViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

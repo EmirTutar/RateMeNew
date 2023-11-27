@@ -1,4 +1,4 @@
-package com.example.rateme.ui.settings;
+package com.example.rateme.ui.history;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.rateme.databinding.FragmentSettingsBinding;
+import com.example.rateme.databinding.FragmentHistoryBinding;
+public class HistoryFragment extends Fragment {
 
-public class SettingsFragment extends Fragment {
-
-    private FragmentSettingsBinding binding;
+    private FragmentHistoryBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SettingsViewModel settingsViewModel =
-                new ViewModelProvider(this).get(SettingsViewModel.class);
+        HistoryViewModel historyViewModel =
+                new ViewModelProvider(this).get(HistoryViewModel.class);
 
-        binding = FragmentSettingsBinding.inflate(inflater, container, false);
+        binding = FragmentHistoryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSettings;
-        settingsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textHistory;
+        historyViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

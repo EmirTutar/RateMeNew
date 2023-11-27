@@ -1,5 +1,4 @@
-package com.example.rateme.ui.settings;
-
+package com.example.rateme.ui.scan;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,22 +9,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.rateme.databinding.FragmentSettingsBinding;
+import com.example.rateme.databinding.FragmentScanBinding;
 
-public class SettingsFragment extends Fragment {
+public class ScanFragment extends Fragment {
 
-    private FragmentSettingsBinding binding;
+    private FragmentScanBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SettingsViewModel settingsViewModel =
-                new ViewModelProvider(this).get(SettingsViewModel.class);
+        ScanViewModel scanViewModel =
+                new ViewModelProvider(this).get(ScanViewModel.class);
 
-        binding = FragmentSettingsBinding.inflate(inflater, container, false);
+        binding = FragmentScanBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSettings;
-        settingsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textScan;
+        scanViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
