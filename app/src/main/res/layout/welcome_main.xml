@@ -11,12 +11,11 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
-        android:text="Welcome"
-        android:textSize="55sp"
+        android:layout_marginTop="116dp"
+        android:text="@string/welcome"
         android:textColor="#ffffff"
+        android:textSize="55sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,11 +27,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/logo_intro" />
+        app:srcCompat="@drawable/logo_intro"
+        android:importantForAccessibility="no" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="397dp"
+        android:layout_height="156dp"
         android:layout_marginTop="16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,9 +41,9 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/welcomeButtonLogin"
             style="@android:style/Widget.Button"
-            android:layout_width="match_parent"
+            android:layout_width="342dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
@@ -51,15 +51,15 @@
 
             android:layout_marginBottom="8dp"
             android:background="@drawable/background_btn_intro1"
-            android:text="Login"
+            android:text="@string/loginLowerCase"
             android:textColor="#235505"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/welcomeButtonSignUp"
             style="@android:style/Widget.Button"
-            android:layout_width="match_parent"
+            android:layout_width="341dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
@@ -67,7 +67,7 @@
 
             android:layout_marginBottom="8dp"
             android:background="@drawable/background_btn_intro2"
-            android:text="SignUp"
+            android:text="@string/signUpLowercase"
             android:textColor="#ffffff"
             android:textSize="24sp"
             android:textStyle="bold" />

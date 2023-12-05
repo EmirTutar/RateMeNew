@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "476370118990",
+    "project_id": "rateme-loginregister",
+    "storage_bucket": "rateme-loginregister.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476370118990:android:0a154ed740af34e5a6961f",
+        "android_client_info": {
+          "package_name": "com.example.project58"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFJhCkIOBYxHjE_1iX1Eu4WcCG36IjDhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476370118990:android:964faf345648e508a6961f",
+        "android_client_info": {
+          "package_name": "com.example.rateme"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFJhCkIOBYxHjE_1iX1Eu4WcCG36IjDhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/login"
+        android:text="@string/loginUpperCase"
         android:textColor="#df7154"
         android:textSize="55sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,12 +22,12 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
+        android:importantForAccessibility="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/logo_login"
-        android:importantForAccessibility="no" />
+        app:srcCompat="@drawable/logo_login" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -42,7 +42,7 @@
         app:layout_constraintVertical_bias="0.51">
 
         <EditText
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/usernameLogin"
             android:layout_gravity="center_horizontal"
             android:layout_width="346dp"
             android:layout_height="50dp"
@@ -60,7 +60,7 @@
             tools:ignore="RtlSymmetry" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/passwordLogin"
             android:layout_width="346dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
@@ -120,8 +120,13 @@
                 app:srcCompat="@drawable/facebook" />
         </LinearLayout>
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonLogin"
             style="@android:style/Widget.Button"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -132,9 +137,19 @@
 
             android:layout_marginBottom="8dp"
             android:background="@drawable/btn_orange"
-            android:text="@string/signup"
+            android:text="@string/SignUpUpperCase"
             android:textColor="#ffffff"
             android:textSize="24sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/clickToRegister"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="@string/click_to_register" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

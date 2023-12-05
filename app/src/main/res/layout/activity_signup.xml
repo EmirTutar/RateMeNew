@@ -10,8 +10,8 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/signup"
+        android:layout_marginTop="16dp"
+        android:text="@string/SignUpUpperCase"
         android:textColor="#df7154"
         android:textSize="55sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,18 +23,17 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:importantForAccessibility="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@drawable/logo_sign_up"
-        android:importantForAccessibility="no"
         tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginBottom="5dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <EditText
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -54,14 +53,14 @@
             android:background="@drawable/edittext_background"
             android:ems="10"
             android:hint="@string/username"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:textColorHint="#464646"
-            android:importantForAutofill="no"
             tools:ignore="RtlSymmetry" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -71,14 +70,14 @@
             android:background="@drawable/edittext_background"
             android:ems="10"
             android:hint="@string/email"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:textColorHint="#464646"
-            android:importantForAutofill="no"
             tools:ignore="RtlSymmetry" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -88,14 +87,14 @@
             android:background="@drawable/edittext_background"
             android:ems="10"
             android:hint="@string/password"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:textColorHint="#464646"
-            android:importantForAutofill="no"
             tools:ignore="RtlSymmetry" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/rePassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -105,14 +104,20 @@
             android:background="@drawable/edittext_background"
             android:ems="10"
             android:hint="@string/repassword"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:textColorHint="#464646"
-            android:importantForAutofill="no"
             tools:ignore="RtlSymmetry" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonSignUp"
             style="@android:style/Widget.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -122,9 +127,19 @@
 
             android:layout_marginBottom="8dp"
             android:background="@drawable/btn_orange"
-            android:text="@string/signup"
+            android:text="@string/SignUpUpperCase"
             android:textColor="#ffffff"
             android:textSize="24sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/clickToLogin"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="@string/click_to_login" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

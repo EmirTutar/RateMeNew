@@ -5,10 +5,15 @@
     <string name="title_favourites">Favourites</string>
     <string name="title_settings">Settings</string>
     <string name="username">Username</string>
-    <string name="signup">SIGNUP</string>
+    <string name="SignUpUpperCase">SIGNUP</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="repassword">RePassword</string>
-    <string name="login">LOGIN</string>
+    <string name="loginUpperCase">LOGIN</string>
     <string name="forget_your_password">Forget Your Password?</string>
+    <string name="signUpLowercase">SingUp</string>
+    <string name="loginLowerCase">Login</string>
+    <string name="welcome">Welcome</string>
+    <string name="click_to_login">Click to Login</string>
+    <string name="click_to_register">Click to register</string>
 </resources>
