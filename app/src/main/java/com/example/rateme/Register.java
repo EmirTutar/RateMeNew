@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Register extends AppCompatActivity {
 
-    TextInputEditText editTextEmail, editTextPassword;
+    TextInputEditText  editTextUsername ,editTextEmail, editTextPassword, editTextRePassword;
     Button buttonReg;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
@@ -33,6 +33,7 @@ public class Register extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        // Wenn User existiert, dann weiterleiten auf MainActivity
         if(currentUser != null){
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
@@ -48,10 +49,13 @@ public class Register extends AppCompatActivity {
         mAuth= FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.username);
         editTextPassword = findViewById(R.id.password);
+        editTextUsername = findViewById(R.id.username);
+        editTextRePassword = findViewById(R.id.rePassword);
         buttonReg = findViewById(R.id.buttonSignUp);
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.clickToLogin);
 
+        // Wenn man auf Textview drückt, kommt man zur Login Seite
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,10 +69,13 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                String email, password;
+                String user, email, password, rePassword;
                 email = editTextEmail.getText().toString();
                 password = editTextPassword.getText().toString();
+                user = editTextUsername.getText().toString();
+                rePassword = editTextRePassword.getText().toString();
 
+                // wenn Felder leer sind, Hinweis ausgeben
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(Register.this, "Enter Email", Toast.LENGTH_SHORT).show();
                     return;
@@ -77,7 +84,17 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(Register.this, "Enter Password", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(TextUtils.isEmpty(user)){
+                    Toast.makeText(Register.this, "Enter Username", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(rePassword)){
+                    Toast.makeText(Register.this, "Enter repeated Password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
+
+                //create register account with firebase
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                             @Override

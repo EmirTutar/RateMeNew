@@ -32,6 +32,7 @@ public class Login extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        // wenn User existiert, dann weiterleiten auf MainActivity
         if(currentUser != null){
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
@@ -51,6 +52,7 @@ public class Login extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.clickToRegister);
 
+        // Wenn man auf den Textview drückt, wird man auf die Register Seite weitergeleitet
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,7 +69,7 @@ public class Login extends AppCompatActivity {
                 String email, password;
                 email = editTextEmail.getText().toString();
                 password = editTextPassword.getText().toString();
-
+                // Nachricht wenn Felder leer sind
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(Login.this, "Enter Email", Toast.LENGTH_SHORT).show();
                     return;
@@ -77,6 +79,7 @@ public class Login extends AppCompatActivity {
                     return;
                 }
 
+                //Login für Firebase
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
