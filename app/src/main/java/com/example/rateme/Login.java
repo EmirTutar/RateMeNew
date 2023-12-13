@@ -9,24 +9,24 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 
-    TextInputEditText editTextEmail, editTextPassword;
+    EditText editTextEmail, editTextPassword;
     Button buttonLogin;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
-    TextView textView;
+    TextView clickToRegisterText, forgetPasswordText;
 
     @Override
     public void onStart() {
@@ -50,10 +50,10 @@ public class Login extends AppCompatActivity {
         editTextPassword = findViewById(R.id.passwordLogin);
         buttonLogin = findViewById(R.id.buttonLogin);
         progressBar = findViewById(R.id.progressBar);
-        textView = findViewById(R.id.clickToRegister);
+        clickToRegisterText = findViewById(R.id.clickToRegister);
 
         // Wenn man auf den Textview drückt, wird man auf die Register Seite weitergeleitet
-        textView.setOnClickListener(new View.OnClickListener() {
+        clickToRegisterText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(getApplicationContext(), Register.class);
@@ -76,6 +76,10 @@ public class Login extends AppCompatActivity {
                 }
                 if(TextUtils.isEmpty(password)){
                     Toast.makeText(Login.this, "Enter Password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(password.length() < 6){
+                    Toast.makeText(Login.this, "Password must be => 6 Characters", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

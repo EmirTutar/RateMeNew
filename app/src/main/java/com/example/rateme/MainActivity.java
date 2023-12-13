@@ -3,6 +3,7 @@ package com.example.rateme;
 import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -13,6 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
+
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+        //ohne toolbar ist app abgestürzt
+        Toolbar toolbar = findViewById(R.id.toolbar);
+
+
+        setSupportActionBar(toolbar);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Setup für die Navigation
         appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_scan).build();
@@ -69,5 +79,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
+    }
+
+    public void logout (View view){
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getApplicationContext(), Welcome.class));
+        finish();
     }
 }
