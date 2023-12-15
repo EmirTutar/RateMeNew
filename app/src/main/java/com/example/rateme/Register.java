@@ -24,7 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Register extends AppCompatActivity {
 
-    EditText editTextUsername ,editTextEmail, editTextPassword, editTextRePassword;
+    EditText editTextUsername ,editTextEmail, editTextPassword, editTextConfirmPassword;
     Button buttonReg;
     FirebaseAuth mAuth;
     FirebaseFirestore firebaseFirestore;
@@ -56,7 +56,7 @@ public class Register extends AppCompatActivity {
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         editTextUsername = findViewById(R.id.username);
-        editTextRePassword = findViewById(R.id.rePassword);
+        editTextConfirmPassword = findViewById(R.id.rePassword);
         buttonReg = findViewById(R.id.buttonSignUp);
         progressBar = findViewById(R.id.progressBar);
         clickToLoginText = findViewById(R.id.clickToLogin);
@@ -75,35 +75,42 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                String user, email, password, rePassword;
+                String user, email, password, confirmPassword;
                 email = editTextEmail.getText().toString().trim();
-                password = editTextPassword.getText().toString().trim();
-                user = editTextUsername.getText().toString().trim();
-                rePassword = editTextRePassword.getText().toString().trim();
+                password = editTextPassword.getText().toString();
+                user = editTextUsername.getText().toString();
+                confirmPassword = editTextConfirmPassword.getText().toString();
 
 
                 // wenn Felder leer sind, Hinweis ausgeben
                 if(TextUtils.isEmpty(user)){
+                    //editTextUsername.setError("Enter Email");
                     Toast.makeText(Register.this, "Enter Username", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(TextUtils.isEmpty(email)){
+                    //editTextEmail.setError("Enter Email");
                     Toast.makeText(Register.this, "Enter Email", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
+                    // editTextPassword.setError("Enter Password");
                     Toast.makeText(Register.this, "Enter Password", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(password.length() < 6){
+                    //editTextPassword.setError("Password must be => 6 Characters");
                     Toast.makeText(Register.this, "Password must be => 6 Characters", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(TextUtils.isEmpty(rePassword)){
+                if(TextUtils.isEmpty(confirmPassword)){
+                    //editTextConfirmPassword.setError("Enter repeated Password");
                     Toast.makeText(Register.this, "Enter repeated Password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(rePassword.toString().trim() != password.toString().trim()){
+                if(!TextUtils.equals(confirmPassword,password)){
+                    //editTextConfirmPassword.setError("Password have to be the same");
+                    //editTextPassword.setError("Password have to be the same");
                     Toast.makeText(Register.this, "Password have to be the same", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -121,7 +128,8 @@ public class Register extends AppCompatActivity {
 
                                     firebaseFirestore.collection("User")
                                             .document(mAuth.getInstance().getUid())
-                                            .set();
+                                            .set(new UserModel(user, email));
+
                                     progressDialog.cancel();
                                 } else {
                                     // If sign in fails, display a message to the user.

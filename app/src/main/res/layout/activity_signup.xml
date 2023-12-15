@@ -89,7 +89,7 @@
             android:ems="10"
             android:hint="@string/password"
             android:importantForAutofill="no"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:paddingStart="20dp"
             android:textColorHint="#464646"
             tools:ignore="RtlSymmetry" />
@@ -104,7 +104,7 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/edittext_background"
             android:ems="10"
-            android:hint="@string/repassword"
+            android:hint="@string/confirm_password"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:paddingStart="20dp"
@@ -115,6 +115,7 @@
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:visibility="gone" />
 
         <Button
