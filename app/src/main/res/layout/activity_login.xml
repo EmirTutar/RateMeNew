@@ -8,10 +8,10 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewRateMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="@string/loginUpperCase"
         android:textColor="#df7154"
         android:textSize="55sp"
@@ -23,24 +23,25 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:importantForAccessibility="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRateMe"
         app:srcCompat="@drawable/logo_login" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="5dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.51">
+        app:layout_constraintVertical_bias="0.721">
 
         <EditText
             android:id="@+id/usernameLogin"
@@ -55,7 +56,7 @@
             android:ems="10"
             android:hint="@string/username"
             android:importantForAutofill="no"
-            android:inputType="textPersonName"
+            android:inputType="textEmailAddress"
             android:paddingStart="20dp"
             android:textColorHint="#464646"
             tools:ignore="RtlSymmetry" />
@@ -82,45 +83,11 @@
             android:id="@+id/forgetYourPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="@string/forget_your_password"
-            android:textAlignment="center" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imageView4"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:importantForAccessibility="no"
-                app:srcCompat="@drawable/twitter" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:importantForAccessibility="no"
-                app:srcCompat="@drawable/google" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:importantForAccessibility="no"
-                app:srcCompat="@drawable/facebook" />
-        </LinearLayout>
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -149,13 +116,13 @@
         <TextView
             android:id="@+id/clickToRegister"
             android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:layout_marginTop="0dp"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:visibility="visible"
-            tools:text="@string/click_to_register" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/click_to_register"
+            android:textAlignment="center"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

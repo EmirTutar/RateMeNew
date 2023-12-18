@@ -13,7 +13,7 @@
     <string name="forget_your_password">Forget Your Password?</string>
     <string name="signUpLowercase">SingUp</string>
     <string name="loginLowerCase">Login</string>
-    <string name="welcome">Welcome</string>
+    <string name="rateMe">RateMe</string>
     <string name="click_to_login">Click to Login</string>
     <string name="click_to_register">Click to register</string>
 </resources>
