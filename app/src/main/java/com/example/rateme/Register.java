@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -81,55 +82,66 @@ public class Register extends AppCompatActivity {
                 user = editTextUsername.getText().toString();
                 confirmPassword = editTextConfirmPassword.getText().toString();
 
+                //delete Progressbar after 2000 delayMillis
+                Handler handler=new Handler();
+                handler.postDelayed(()->{
+                    progressBar.setVisibility(View.GONE);
+                }, 2000);
+
 
                 // wenn Felder leer sind, Hinweis ausgeben
                 if(TextUtils.isEmpty(user)){
                     //editTextUsername.setError("Enter Email");
                     Toast.makeText(Register.this, "Enter Username", Toast.LENGTH_SHORT).show();
+                    editTextUsername.requestFocus();
                     return;
                 }
                 if(TextUtils.isEmpty(email)){
                     //editTextEmail.setError("Enter Email");
                     Toast.makeText(Register.this, "Enter Email", Toast.LENGTH_SHORT).show();
+                    editTextEmail.requestFocus();
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
                     // editTextPassword.setError("Enter Password");
                     Toast.makeText(Register.this, "Enter Password", Toast.LENGTH_SHORT).show();
+                    editTextPassword.requestFocus();
                     return;
                 }
                 if(password.length() < 6){
                     //editTextPassword.setError("Password must be => 6 Characters");
                     Toast.makeText(Register.this, "Password must be => 6 Characters", Toast.LENGTH_SHORT).show();
+                    editTextPassword.requestFocus();
                     return;
                 }
                 if(TextUtils.isEmpty(confirmPassword)){
                     //editTextConfirmPassword.setError("Enter repeated Password");
                     Toast.makeText(Register.this, "Enter repeated Password", Toast.LENGTH_SHORT).show();
+                    editTextConfirmPassword.requestFocus();
                     return;
                 }
                 if(!TextUtils.equals(confirmPassword,password)){
                     //editTextConfirmPassword.setError("Password have to be the same");
                     //editTextPassword.setError("Password have to be the same");
                     Toast.makeText(Register.this, "Password have to be the same", Toast.LENGTH_SHORT).show();
+                    editTextConfirmPassword.requestFocus();
+                    editTextPassword.requestFocus();
                     return;
                 }
 
                 progressDialog.show();
                 //create register account with firebase
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
-                                    FirebaseUser fuser= mAuth.getCurrentUser();
+                                    FirebaseUser firebaseUser= mAuth.getCurrentUser();
 
                                     //send verification to email
-                                    fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    firebaseUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void unused) {
-                                            Toast.makeText(Register.this, "Verfication Email has been sent", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(Register.this, "Verification Email has been sent", Toast.LENGTH_SHORT).show();
 
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
@@ -166,7 +178,7 @@ public class Register extends AppCompatActivity {
                                     progressDialog.cancel();
                                 }
                             }
-                        });
+                });
             }
         });
 

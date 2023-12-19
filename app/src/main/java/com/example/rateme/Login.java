@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +33,6 @@ public class Login extends AppCompatActivity {
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView clickToRegisterText, forgetPasswordText;
-    ProgressDialog progressDialog;
 
     @Override
     public void onStart() {
@@ -53,7 +53,6 @@ public class Login extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         clickToRegisterText = findViewById(R.id.clickToRegister);
         forgetPasswordText = findViewById(R.id.forgetYourPassword);
-        progressDialog = new ProgressDialog(this);
 
         // Wenn man auf den Textview drückt, wird man auf die Register Seite weitergeleitet
         clickToRegisterText.setOnClickListener(new View.OnClickListener() {
@@ -70,13 +69,10 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String email = editTextEmail.getText().toString();
-                progressDialog.setTitle("Sending Mail");
-                progressDialog.show();
                 mAuth.sendPasswordResetEmail(email)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                progressDialog.cancel();
 
                                 Toast.makeText(Login.this, "Email sent", Toast.LENGTH_SHORT).show();
                             }
@@ -84,7 +80,6 @@ public class Login extends AppCompatActivity {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                progressDialog.cancel();
 
                                 Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
@@ -99,7 +94,13 @@ public class Login extends AppCompatActivity {
                 String email, password;
                 email = editTextEmail.getText().toString();
                 password = editTextPassword.getText().toString();
-                progressDialog.show();
+
+                //delete Progressbar after 2000 delayMillis
+                Handler handler=new Handler();
+                handler.postDelayed(()->{
+                    progressBar.setVisibility(View.GONE);
+                }, 2000);
+
                 // Nachricht wenn Felder leer sind
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(Login.this, "Enter Email", Toast.LENGTH_SHORT).show();
@@ -117,7 +118,6 @@ public class Login extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
-                                    progressDialog.cancel();
 
                                     //check if user is already verified
                                     FirebaseUser firebaseUser = mAuth.getCurrentUser();
@@ -130,11 +130,9 @@ public class Login extends AppCompatActivity {
                                         finish();
                                     }else {
                                         Toast.makeText(Login.this, "please verify your email", Toast.LENGTH_SHORT).show();
-                                        progressDialog.cancel();
                                     }
 
                                 } else {
-                                    progressDialog.cancel();
 
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(Login.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
