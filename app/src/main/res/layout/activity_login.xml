@@ -44,7 +44,7 @@
         app:layout_constraintVertical_bias="0.721">
 
         <EditText
-            android:id="@+id/usernameLogin"
+            android:id="@+id/emailLogin"
             android:layout_width="346dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
@@ -54,7 +54,7 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/edittext_background"
             android:ems="10"
-            android:hint="@string/username"
+            android:hint="@string/email"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:paddingStart="20dp"
