@@ -48,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
         currentUser=findViewById(R.id.currentUser);
 
         //ohne toolbar ist app abgestürzt
-        Toolbar toolbar = findViewById(R.id.toolbar);
+       // Toolbar toolbar = findViewById(R.id.toolbar);
 
 
-        setSupportActionBar(toolbar);
+       // setSupportActionBar(toolbar);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Setup für die Navigation
         appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_scan).build();
