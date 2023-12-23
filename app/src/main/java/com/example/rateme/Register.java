@@ -27,6 +27,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 public class Register extends AppCompatActivity {
 
@@ -89,8 +90,20 @@ public class Register extends AppCompatActivity {
                 }, 2000);
 
 
-                // wenn Felder leer sind, Hinweis ausgeben
-                if(TextUtils.isEmpty(user)){
+// Abfrage erstellen
+                Query query = firebaseFirestore.collection("User")
+                        .whereEqualTo("username", user);
+
+// Abfrage durchführen
+                query.get().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        // Überprüfen, ob es Ergebnisse gibt
+                        if (task.getResult() != null && !task.getResult().isEmpty()) {
+                            Toast.makeText(Register.this, "This Username already exist", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                            if(TextUtils.isEmpty(user)){
                     //editTextUsername.setError("Enter Email");
                     Toast.makeText(Register.this, "Enter Username", Toast.LENGTH_SHORT).show();
                     editTextUsername.requestFocus();
