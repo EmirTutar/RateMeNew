@@ -13,11 +13,11 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.rateme.databinding.FragmentFavouritesBinding;
+import com.example.rateme.databinding.FavouritesBinding;
 
 public class Favourites extends Fragment {
 
-    private FragmentFavouritesBinding binding;
+    private FavouritesBinding binding;
     private final MutableLiveData<String> mText;
 
     public Favourites() {
@@ -28,7 +28,7 @@ public class Favourites extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentFavouritesBinding.inflate(inflater, container, false);
+        binding = FavouritesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textFavourites;

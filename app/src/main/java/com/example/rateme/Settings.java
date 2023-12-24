@@ -13,11 +13,11 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.rateme.databinding.FragmentSettingsBinding;
+import com.example.rateme.databinding.SettingsBinding;
 
 public class Settings extends Fragment {
 
-    private FragmentSettingsBinding binding;
+    private SettingsBinding binding;
     private final MutableLiveData<String> mText;
 
     public Settings() {
@@ -28,7 +28,7 @@ public class Settings extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentSettingsBinding.inflate(inflater, container, false);
+        binding = SettingsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textSettings;

@@ -47,12 +47,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         currentUser=findViewById(R.id.currentUser);
 
-        //ohne toolbar ist app abgestürzt
-       // Toolbar toolbar = findViewById(R.id.toolbar);
-
-
-       // setSupportActionBar(toolbar);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
         // Setup für die Navigation
         appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_scan).build();
 
@@ -76,36 +70,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-        // Navigation View
-        Button scanButton = findViewById(R.id.scanButton);
-        scanButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Starte den Barcode-Scan
-                new IntentIntegrator(MainActivity.this).initiateScan();
-            }
-        });
-
-
-
     }
 
-    // Diese Methode wird aufgerufen, wenn der Barcode-Scan abgeschlossen ist
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
-            if (result.getContents() != null) {
-                // Hier kannst du die gescannten Daten verwenden
-                String scannedData = result.getContents();
-                // Verarbeite die gescannten Daten hier weiter
-                Toast.makeText(this, "Gescannter Barcode: " + scannedData, Toast.LENGTH_LONG).show();
-            } else {
-                // Handle den Fall, dass der Scan abgebrochen wurde
+        if (requestCode == IntentIntegrator.REQUEST_CODE) {
+            IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+            if (result != null) {
+                if (result.getContents() != null) {
+                    String scannedData = result.getContents();
+                    Toast.makeText(this, "Gescannter Barcode: " + scannedData, Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(this, "Scan abgebrochen", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }

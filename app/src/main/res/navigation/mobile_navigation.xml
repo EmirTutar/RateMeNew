@@ -9,24 +9,24 @@
         android:id="@+id/navigation_scan"
         android:name="com.example.rateme.Scan"
         android:label="@string/title_scan"
-        tools:layout="@layout/fragment_scan" />
+        tools:layout="@layout/scan" />
 
     <fragment
         android:id="@+id/navigation_history"
         android:name="com.example.rateme.History"
         android:label="@string/title_history"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/history" />
 
     <fragment
         android:id="@+id/navigation_favourites"
         android:name="com.example.rateme.Favourites"
         android:label="@string/title_favourites"
-        tools:layout="@layout/fragment_favourites" />
+        tools:layout="@layout/favourites" />
 
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.example.rateme.Settings"
         android:label="@string/title_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/settings" />
 
 </navigation>

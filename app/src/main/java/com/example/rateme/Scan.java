@@ -4,20 +4,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.example.rateme.databinding.FragmentScanBinding;
+import com.example.rateme.databinding.ScanBinding;
+import com.google.zxing.integration.android.IntentIntegrator;
 
 public class Scan extends Fragment {
 
-    private FragmentScanBinding binding;
+    private ScanBinding binding;
     private final MutableLiveData<String> mText;
 
     public Scan() {
@@ -25,14 +23,20 @@ public class Scan extends Fragment {
         mText.setValue("Scan");
     }
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+                         ViewGroup container, Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        View root = inflater.inflate(R.layout.scan, container, false);
 
-        binding = FragmentScanBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-        final TextView textView = binding.textScan;
-        mText.observe(getViewLifecycleOwner(), textView::setText);
+        // Der Scanner-Code aus der MainActivity
+        Button scanButton = root.findViewById(R.id.scanButton);
+        scanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new IntentIntegrator(requireActivity()).initiateScan();
+            }
+        });
 
         return root;
     }

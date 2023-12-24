@@ -13,11 +13,11 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.rateme.databinding.FragmentHistoryBinding;
+import com.example.rateme.databinding.HistoryBinding;
 
 public class History extends Fragment {
 
-    private FragmentHistoryBinding binding;
+    private HistoryBinding binding;
     private final MutableLiveData<String> mText;
 
     public History() {
@@ -28,7 +28,7 @@ public class History extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentHistoryBinding.inflate(inflater, container, false);
+        binding = HistoryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textHistory;
