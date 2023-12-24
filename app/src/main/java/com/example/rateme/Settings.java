@@ -1,4 +1,4 @@
-package com.example.rateme.ui.settings;
+package com.example.rateme;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,24 +8,32 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.rateme.databinding.FragmentSettingsBinding;
 
-public class SettingsFragment extends Fragment {
+public class Settings extends Fragment {
 
     private FragmentSettingsBinding binding;
+    private final MutableLiveData<String> mText;
+
+    public Settings() {
+        mText = new MutableLiveData<>();
+        mText.setValue("Settings");
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SettingsViewModel settingsViewModel =
-                new ViewModelProvider(this).get(SettingsViewModel.class);
 
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textSettings;
-        settingsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        mText.observe(getViewLifecycleOwner(), textView::setText);
+
         return root;
     }
 

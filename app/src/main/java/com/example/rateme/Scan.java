@@ -1,4 +1,5 @@
-package com.example.rateme.ui.scan;
+package com.example.rateme;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,24 +8,32 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.rateme.databinding.FragmentScanBinding;
 
-public class ScanFragment extends Fragment {
+public class Scan extends Fragment {
 
     private FragmentScanBinding binding;
+    private final MutableLiveData<String> mText;
+
+    public Scan() {
+        mText = new MutableLiveData<>();
+        mText.setValue("Scan");
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        ScanViewModel scanViewModel =
-                new ViewModelProvider(this).get(ScanViewModel.class);
 
         binding = FragmentScanBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textScan;
-        scanViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        mText.observe(getViewLifecycleOwner(), textView::setText);
+
         return root;
     }
 
@@ -34,3 +43,4 @@ public class ScanFragment extends Fragment {
         binding = null;
     }
 }
+
