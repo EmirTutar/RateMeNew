@@ -1,8 +1,5 @@
 package com.example.rateme;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -16,6 +13,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -90,11 +90,11 @@ public class Register extends AppCompatActivity {
                 }, 2000);
 
 
-// Abfrage erstellen
+                // Abfrage erstellen
                 Query query = firebaseFirestore.collection("User")
                         .whereEqualTo("username", user);
 
-// Abfrage durchführen
+                // Abfrage durchführen
                 query.get().addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         // Überprüfen, ob es Ergebnisse gibt

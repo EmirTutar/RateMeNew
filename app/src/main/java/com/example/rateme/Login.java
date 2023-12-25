@@ -1,8 +1,5 @@
 package com.example.rateme;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +12,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -52,7 +52,6 @@ public class Login extends AppCompatActivity {
         clickToRegisterText = findViewById(R.id.clickToRegister);
         forgetPasswordText = findViewById(R.id.forgetYourPassword);
 
-        // Wenn man auf den Textview drückt, wird man auf die Register Seite weitergeleitet
         clickToRegisterText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

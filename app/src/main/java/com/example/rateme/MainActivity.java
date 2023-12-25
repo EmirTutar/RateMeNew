@@ -1,27 +1,20 @@
 package com.example.rateme;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import com.example.rateme.databinding.ActivityMainBinding;
-import android.content.Intent;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-import androidx.annotation.Nullable;
 
+import com.example.rateme.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -55,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
         String userId = FirebaseAuth.getInstance().getUid();
-// Pfad zur Benutzerdokument in Firestore
+        // Pfad zur Benutzerdokument in Firestore
         DocumentReference documentReferenceRef = firebaseFirestore.collection("User").document(userId);
 
-// Daten aus Firestore abrufen
+        // Daten aus Firestore abrufen
         documentReferenceRef.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -88,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Füge diese Methode hinzu, um die Up-Navigation zu unterstützen
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
