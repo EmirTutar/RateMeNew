@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 if (result.getContents() != null) {
                     String scannedData = result.getContents();
                     Toast.makeText(this, "Gescannter Barcode: " + scannedData, Toast.LENGTH_LONG).show();
+                    Scan.fetchProductDetails(scannedData);
                 } else {
                     Toast.makeText(this, "Scan abgebrochen", Toast.LENGTH_SHORT).show();
                 }
