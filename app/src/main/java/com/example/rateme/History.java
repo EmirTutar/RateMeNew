@@ -4,33 +4,39 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.MutableLiveData;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rateme.databinding.HistoryBinding;
 
+import java.util.ArrayList;
+import java.util.List;
 public class History extends Fragment {
 
     private HistoryBinding binding;
-    private final MutableLiveData<String> mText;
-
-    public History() {
-        mText = new MutableLiveData<>();
-        mText.setValue("History");
-    }
-
+    private RecyclerView recyclerView;
+    private ApiAdapter adapter;
+    private List<String> historyList = new ArrayList<>();
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = HistoryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHistory;
-        mText.observe(getViewLifecycleOwner(), textView::setText);
+        recyclerView = root.findViewById(R.id.history_recycler_view);
+        adapter = new ApiAdapter(MainActivity.scannedProductDetails);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
 
+        Scan.productDetailsLiveData.observe(getViewLifecycleOwner(), newProductDetail -> {
+            if (newProductDetail != null && !newProductDetail.isEmpty()) {
+                historyList.add(0, newProductDetail); // Fügt das neue Produkt am Anfang der Liste hinzu
+                adapter.notifyDataSetChanged();
+            }
+        });
         return root;
     }
 

@@ -24,8 +24,12 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
+    public static List<String> scannedProductDetails = new ArrayList<>();
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     FirebaseFirestore firebaseFirestore;
@@ -73,14 +77,24 @@ public class MainActivity extends AppCompatActivity {
                 if (result.getContents() != null) {
                     String scannedData = result.getContents();
                     Toast.makeText(this, "Gescannter Barcode: " + scannedData, Toast.LENGTH_LONG).show();
-                    Scan.fetchProductDetails(scannedData);
+                    initiateApiRequest(scannedData);
                 } else {
                     Toast.makeText(this, "Scan abgebrochen", Toast.LENGTH_SHORT).show();
                 }
             }
         }
     }
-
+    private void initiateApiRequest(String barcode) {
+        ApiRequest.initiateApiRequest(barcode, new ApiRequest.ApiCallback() {
+            @Override
+            public void onResultReceived(String result) {
+                if (result != null) {
+                    scannedProductDetails.add(0, result); // Fügt die neuen Daten am Anfang der Liste hinzu
+                    Scan.productDetailsLiveData.postValue(result);
+                }
+            }
+        });
+    }
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);

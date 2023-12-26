@@ -18,7 +18,11 @@ import okhttp3.Response;
 
 public class ApiRequest {
 
-    public static void initiateApiRequest(String eanCode, MutableLiveData<String> resultLiveData) {
+    public interface ApiCallback {
+        void onResultReceived(String result);
+    }
+
+    public static void initiateApiRequest(String eanCode, ApiCallback callback) {
         new Thread(() -> {
             OkHttpClient client = new OkHttpClient();
 
@@ -35,12 +39,32 @@ public class ApiRequest {
                 Response response = client.newCall(request).execute();
                 String result = response.body().string();
                 Log.d("ApiResponse", "API Response: " + result);
-                processApiResponse(result, resultLiveData);
+                processApiResponse(result, callback);
             } catch (IOException e) {
                 e.printStackTrace();
-                postToLiveData(resultLiveData, null);
             }
         }).start();
+    }
+
+    private static void processApiResponse(String result, ApiCallback callback) {
+        Log.d("ApiResponse", "Raw Response: " + result);
+
+        try {
+            JSONObject jsonObject = new JSONObject(result);
+
+            if (jsonObject.has("product")) {
+                JSONObject productObject = jsonObject.getJSONObject("product");
+                String attributes = extractAllAttributes(productObject);
+                callback.onResultReceived(attributes);
+            } else {
+                Log.d("ApiResponse", "No 'product' object in API response");
+                callback.onResultReceived(null);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e("ApiResponse", "Error parsing API Response: " + e.getMessage());
+            callback.onResultReceived(null);
+        }
     }
 
     private static String extractAllAttributes(JSONObject jsonObject) {
@@ -64,30 +88,5 @@ public class ApiRequest {
         }
 
         return result.toString();
-    }
-
-    private static void processApiResponse(String result, MutableLiveData<String> resultLiveData) {
-        Log.d("ApiResponse", "Raw Response: " + result);
-
-        try {
-            JSONObject jsonObject = new JSONObject(result);
-
-            if (jsonObject.has("product")) {
-                JSONObject productObject = jsonObject.getJSONObject("product");
-                String attributes = extractAllAttributes(productObject);
-                postToLiveData(resultLiveData, attributes);
-            } else {
-                Log.d("ApiResponse", "No 'product' object in API response");
-                resultLiveData.postValue(null);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Log.e("ApiResponse", "Error parsing API Response: " + e.getMessage());
-            resultLiveData.postValue(null);
-        }
-    }
-
-    private static void postToLiveData(MutableLiveData<String> liveData, String value) {
-        new Handler(Looper.getMainLooper()).post(() -> liveData.setValue(value));
     }
 }
