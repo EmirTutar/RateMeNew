@@ -71,7 +71,7 @@ public class ApiRequest {
         StringBuilder result = new StringBuilder();
 
         try {
-            if (jsonObject.has("attributes")) {
+            if (jsonObject.has("attributes") || jsonObject.has("barcode_formats")) {
                 JSONObject attributesObject = jsonObject.getJSONObject("attributes");
 
                 Iterator<String> keys = attributesObject.keys();
@@ -83,6 +83,21 @@ public class ApiRequest {
                     Log.d("ApiResponse", "Extracted Attribute: " + key + ": " + value);
                 }
             }
+
+                if (jsonObject.has("barcode_formats")) {
+                    JSONObject barcodeObject = jsonObject.getJSONObject("barcode_formats");
+
+                    Iterator<String> keys = barcodeObject.keys();
+                    while (keys.hasNext()) {
+                        String key = keys.next();
+                        String value = barcodeObject.getString(key);
+
+                        result.append(key).append(": ").append(value).append("\n");
+                        Log.d("ApiResponse", "Extracted barcode_formats: " + key + ": " + value);
+                    }
+            }
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
