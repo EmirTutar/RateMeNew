@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -33,8 +34,7 @@ public class Scan extends Fragment {
             @Override
             public void onChanged(String s) {
                 productDetails.setText(s);
-            }
-        });
+            }});
 
         // Der Scanner-Code aus der MainActivity
         Button scanButton = root.findViewById(R.id.scanButton);
@@ -44,6 +44,17 @@ public class Scan extends Fragment {
                 new IntentIntegrator(requireActivity()).initiateScan();
             }
         });
+
+        Button addToFavouritesButton = root.findViewById(R.id.button_add_to_favourites);
+        addToFavouritesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.favouriteProductDetails.add(productDetails.getText().toString());
+                Toast.makeText(getContext(), "Product added to Favourites", Toast.LENGTH_SHORT).show();
+                Favourites.updateFavouritesList();
+            }
+        });
+
 
         return root;
     }

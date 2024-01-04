@@ -9,11 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rateme.databinding.FavouritesBinding;
+import androidx.annotation.Nullable;
+
+import java.util.List;
 
 public class Favourites extends Fragment {
 
+    private static FavouritesAdapter adapter;
     private FavouritesBinding binding;
     private final MutableLiveData<String> mText;
 
@@ -31,9 +37,19 @@ public class Favourites extends Fragment {
         final TextView textView = binding.textFavourites;
         mText.observe(getViewLifecycleOwner(), textView::setText);
 
+        RecyclerView recyclerView = root.findViewById(R.id.recyclerViewFavourites);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        FavouritesAdapter adapter = new FavouritesAdapter(MainActivity.favouriteProductDetails);
+        recyclerView.setAdapter(adapter);
+
+
         return root;
     }
-
+    public static void updateFavouritesList() {
+        if (adapter != null) {
+            adapter.updateFavouritesList(MainActivity.favouriteProductDetails);
+        }
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
