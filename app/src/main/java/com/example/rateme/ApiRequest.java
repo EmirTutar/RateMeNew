@@ -73,10 +73,6 @@ public class ApiRequest {
                 result.append("Title: ").append(jsonObject.getString("title")).append("\n");
                 Log.d("ApiResponse", "Extracted Attribute: " + jsonObject.getString("title"));
             }
-            if (jsonObject.has("brand")) {
-                result.append("Brand: ").append(jsonObject.getString("brand")).append("\n");
-                Log.d("ApiResponse", "Extracted Attribute: " + jsonObject.getString("brand"));
-            }
             if (jsonObject.has("barcode_formats")) {
                 JSONObject barcodeObject = jsonObject.getJSONObject("barcode_formats");
 
@@ -88,48 +84,25 @@ public class ApiRequest {
                     Log.d("ApiResponse", "Extracted barcode_formats: " + key + ": " + value);
                 }
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return result.toString();
-    }
-/*
-    private static String extractAllAttributes(JSONObject jsonObject) {
-        StringBuilder result = new StringBuilder();
-
-        try {
-            if (jsonObject.has("attributes") || jsonObject.has("barcode_formats")) {
-                JSONObject attributesObject = jsonObject.getJSONObject("attributes");
-
-                Iterator<String> keys = attributesObject.keys();
-                while (keys.hasNext()) {
-                    String key = keys.next();
-                    String value = attributesObject.getString(key);
-
-                    result.append(key).append(": ").append(value).append("\n");
-                    Log.d("ApiResponse", "Extracted Attribute: " + key + ": " + value);
+            if (jsonObject.has("brand")) {
+                if(jsonObject.getString("brand").equals("null")){
+                    if(jsonObject.has("manufacturer")){
+                        if(jsonObject.getString("manufacturer").equals("null")){
+                            result.append("").append("").append("\n");
+                            Log.d("ApiResponse", "Extracted Attribute: " + "No manufacturer");
+                        } else{
+                        result.append("Manufacturer: ").append(jsonObject.getString("manufacturer")).append("\n");
+                        Log.d("ApiResponse", "Extracted Attribute: " + jsonObject.getString("manufacturer"));
+                        }
+                    }
+                } else {
+                    result.append("Brand: ").append(jsonObject.getString("brand")).append("\n");
+                    Log.d("ApiResponse", "Extracted Attribute: " + jsonObject.getString("brand"));
                 }
             }
-
-                if (jsonObject.has("barcode_formats")) {
-                    JSONObject barcodeObject = jsonObject.getJSONObject("barcode_formats");
-
-                    Iterator<String> keys = barcodeObject.keys();
-                    while (keys.hasNext()) {
-                        String key = keys.next();
-                        String value = barcodeObject.getString(key);
-
-                        result.append(key).append(": ").append(value).append("\n");
-                        Log.d("ApiResponse", "Extracted barcode_formats: " + key + ": " + value);
-                    }
-            }
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         return result.toString();
     }
- */
 }
