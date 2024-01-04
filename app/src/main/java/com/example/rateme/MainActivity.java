@@ -30,6 +30,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static List<String> scannedProductDetails = new ArrayList<>();
+    public static List<String> favouriteProductDetails = new ArrayList<>();
+
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     FirebaseFirestore firebaseFirestore;
