@@ -89,8 +89,10 @@ public class MainActivity extends AppCompatActivity {
         ApiRequest.initiateApiRequest(barcode, new ApiRequest.ApiCallback() {
             @Override
             public void onResultReceived(String result) {
-                if (result != null) {
-                    scannedProductDetails.add(0, result); // Fügt die neuen Daten am Anfang der Liste hinzu
+                if ((result != null) && !result.equals("This Barcode is not available") && !result.equals("Error parsing API response, it looks like the API is down. You can try again later.")) {
+                    scannedProductDetails.add(0, result);
+                    Scan.productDetailsLiveData.postValue(result);
+                } else {
                     Scan.productDetailsLiveData.postValue(result);
                 }
             }

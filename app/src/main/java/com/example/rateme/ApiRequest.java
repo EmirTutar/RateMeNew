@@ -63,7 +63,7 @@ public class ApiRequest {
         } catch (JSONException e) {
             e.printStackTrace();
             Log.e("ApiResponse", "Error parsing API Response: " + e.getMessage());
-            callback.onResultReceived("Error parsing API response");
+            callback.onResultReceived("Error parsing API response, it looks like the API is down. You can try again later.");
         }
     }
     private static String extractRequiredAttributes(JSONObject jsonObject) {

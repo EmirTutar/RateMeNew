@@ -41,6 +41,7 @@ public class Scan extends Fragment {
         scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                productDetails.setText(" Wait for Response...");
                 new IntentIntegrator(requireActivity()).initiateScan();
             }
         });
