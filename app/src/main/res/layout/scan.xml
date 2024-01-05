@@ -14,7 +14,7 @@
         android:layout_marginTop="35dp"
         android:layout_marginEnd="40dp"
         android:text="Product Details"
-        android:textSize="20sp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
         android:layout_marginEnd="10dp"
         android:text="Waiting for scan..."
         android:layout_marginBottom="20dp"
-        android:textSize="20sp"
+        android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textViewComments"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.549"
@@ -44,7 +44,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:text="Comments"
-        android:textSize="20sp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewComments"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
