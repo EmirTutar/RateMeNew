@@ -57,13 +57,13 @@ public class ApiRequest {
                 String attributes = extractRequiredAttributes(productObject);
                 callback.onResultReceived(attributes);
             } else {
-                Log.d("ApiResponse", "No 'product' object in API response");
-                callback.onResultReceived(null);
+                Log.d("ApiResponse", "Barcode not found in database");
+                callback.onResultReceived("This Barcode is not available");
             }
         } catch (JSONException e) {
             e.printStackTrace();
             Log.e("ApiResponse", "Error parsing API Response: " + e.getMessage());
-            callback.onResultReceived(null);
+            callback.onResultReceived("Error parsing API response");
         }
     }
     private static String extractRequiredAttributes(JSONObject jsonObject) {
