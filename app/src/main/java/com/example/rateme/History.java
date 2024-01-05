@@ -18,7 +18,7 @@ public class History extends Fragment {
 
     private HistoryBinding binding;
     private RecyclerView recyclerView;
-    private ApiAdapter adapter;
+    private HistoryAdapter adapter;
     private List<String> historyList = new ArrayList<>();
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class History extends Fragment {
         View root = binding.getRoot();
 
         recyclerView = root.findViewById(R.id.history_recycler_view);
-        adapter = new ApiAdapter(MainActivity.scannedProductDetails);
+        adapter = new HistoryAdapter(MainActivity.scannedProductDetails);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
