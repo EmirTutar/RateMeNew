@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,10 +47,14 @@ public class Scan extends Fragment {
             }
         });
 
-        Button addToFavouritesButton = root.findViewById(R.id.button_add_to_favourites);
+        ImageButton addToFavouritesButton = root.findViewById(R.id.button_add_to_favourites);
         addToFavouritesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(MainActivity.favouriteProductDetails.contains(productDetails.getText().toString()) || productDetails.getText().toString().equals("Scan a Product to get more Details" ) || productDetails.getText().toString().equals("Wait for Response...")){
+                    Toast.makeText(getContext(), "Product already in Favourites", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 MainActivity.favouriteProductDetails.add(productDetails.getText().toString());
                 Toast.makeText(getContext(), "Product added to Favourites", Toast.LENGTH_SHORT).show();
                 Favourites.updateFavouritesList();
