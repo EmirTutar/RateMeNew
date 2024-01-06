@@ -60,8 +60,6 @@ public class Scan extends Fragment {
                 Favourites.updateFavouritesList();
             }
         });
-
-
         return root;
     }
 
