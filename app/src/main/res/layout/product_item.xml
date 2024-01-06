@@ -13,7 +13,7 @@
 
         <ImageView
             android:id="@+id/delete_button"
-            android:src="@mipmap/ic_delete"
+            android:src="@drawable/ic_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
