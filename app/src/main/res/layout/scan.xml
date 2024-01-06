@@ -75,14 +75,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.891" />
 
-    <Button
+    <ImageButton
         android:id="@+id/button_add_to_favourites"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="61dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
-        android:text="Save"
+        android:background="@drawable/imagebutton_addtofavourites"
+        android:src="@drawable/ic_favourites"
         app:layout_constraintBottom_toBottomOf="@+id/product_details"
-        app:layout_constraintEnd_toEndOf="@+id/product_details" />
+        app:layout_constraintEnd_toEndOf="@+id/product_details"
+        app:tint="@color/white" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
