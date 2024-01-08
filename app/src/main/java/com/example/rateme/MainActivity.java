@@ -35,16 +35,16 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     FirebaseFirestore firebaseFirestore;
-    TextView currentUser;
+    TextView currentUserName, currentUserEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        firebaseFirestore=FirebaseFirestore.getInstance();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        currentUser=findViewById(R.id.currentUser);
+        currentUserName = findViewById(R.id.currentUserNameTextView);
+        currentUserEmail = findViewById(R.id.currentUserEmailTextView);
 
         // Setup für die Navigation
         appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_scan).build();
@@ -52,22 +52,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        String userId = FirebaseAuth.getInstance().getUid();
-        // Pfad zur Benutzerdokument in Firestore
-        DocumentReference documentReferenceRef = firebaseFirestore.collection("User").document(userId);
 
-        // Daten aus Firestore abrufen
-        documentReferenceRef.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                if(value.exists()){
-                    currentUser.setText(value.getString("username"));
-                }
-                else{
-                    Log.d("Tag", "onEvent: Document do not exist");
-                }
-            }
-        });
     }
 
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
