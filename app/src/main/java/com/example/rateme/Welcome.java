@@ -25,6 +25,8 @@ public class Welcome extends AppCompatActivity {
         signup=findViewById(R.id.welcomeButtonSignUp);
 
         mAuth= FirebaseAuth.getInstance();
+
+        /*
         FirebaseUser user = mAuth.getCurrentUser();
         if(user!=null) {
             Intent intent = new Intent(Welcome.this, MainActivity.class);
@@ -36,6 +38,7 @@ public class Welcome extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+        */
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
