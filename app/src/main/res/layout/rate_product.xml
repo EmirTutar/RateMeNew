@@ -2,21 +2,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/textViewRate"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="164dp"
+        android:text="Give a Rating:"
+        android:textSize="20dp" />
+
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:numStars="5"
-        android:stepSize="1.0"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="80dp"
+        android:numStars="5"
+        android:stepSize="1.0" />
 
     <Button
         android:id="@+id/btnSubmitRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit Rating"
         android:layout_below="@id/ratingBar"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="150dp"
+        android:text="Submit Rating" />
 </RelativeLayout>

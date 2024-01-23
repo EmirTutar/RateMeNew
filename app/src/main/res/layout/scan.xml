@@ -10,14 +10,12 @@
         android:id="@+id/btnRateProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="4dp"
         android:text="Rate Product"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/scanButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/product_details"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/product_details"
+        app:layout_constraintStart_toStartOf="@+id/product_details" />
 
     <TextView
         android:id="@+id/textViewAverageRating"
@@ -25,18 +23,18 @@
         android:layout_height="50dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="216dp"
+        android:layout_marginBottom="120dp"
         android:text="Rating:"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/scanButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textViewHeadline"
         android:layout_width="340dp"
-        android:layout_height="30dp"
+        android:layout_height="51dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="35dp"
         android:layout_marginEnd="40dp"
@@ -49,7 +47,7 @@
     <TextView
         android:id="@+id/product_details"
         android:layout_width="340dp"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -61,20 +59,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewHeadline"
         app:layout_constraintVertical_bias="0.325" />
-
-    <TextView
-        android:id="@+id/textViewRate"
-        android:layout_width="340dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="164dp"
-        android:text="Give a Rating:"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/scanButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <RatingBar
         android:id="@+id/RatingBarShowRating"
