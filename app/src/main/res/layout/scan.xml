@@ -6,16 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".Scan">
 
-    <RatingBar
-        android:id="@+id/ratingBarRate"
+    <Button
+        android:id="@+id/btnRateProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:numStars="5"
-        android:rating="0"
-        android:stepSize="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewRate"
-        app:layout_constraintTop_toTopOf="@+id/textViewRate" />
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="192dp"
+        android:text="Rate Product"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/scanButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/product_details"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewAverageRating"
@@ -66,12 +68,12 @@
         android:layout_height="50dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="164dp"
         android:text="Give a Rating:"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/scanButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent" />
 
     <RatingBar
