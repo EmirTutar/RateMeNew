@@ -81,6 +81,7 @@
         android:layout_marginEnd="4dp"
         android:numStars="5"
         android:rating="0"
+        android:isIndicator="true"
         android:stepSize="1.0"
         app:layout_constraintBottom_toBottomOf="@+id/textViewAverageRating"
         app:layout_constraintEnd_toEndOf="@+id/textViewAverageRating" />
@@ -101,11 +102,12 @@
 
     <ImageButton
         android:id="@+id/button_add_to_favourites"
-        android:layout_width="61dp"
-        android:layout_height="47dp"
+        android:layout_width="73dp"
+        android:layout_height="51dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
         android:background="@drawable/imagebutton_addtofavourites"
+        android:contentDescription="Adds_Product_to_Favourites"
         android:src="@drawable/ic_favourites"
         app:layout_constraintBottom_toBottomOf="@+id/product_details"
         app:layout_constraintEnd_toEndOf="@+id/product_details"

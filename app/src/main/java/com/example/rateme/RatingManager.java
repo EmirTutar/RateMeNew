@@ -3,27 +3,48 @@ package com.example.rateme;
 import android.util.Log;
 import android.widget.RatingBar;
 
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class RatingManager {
     private FirebaseFirestore db;
+    private FirebaseAuth firebaseAuth;
 
     public RatingManager() {
         db = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    public void saveRatingToFirebase(String productTitle, float rating) {
+    public void saveOrUpdateRating(String productTitle, float rating) {
+        String userEmail = firebaseAuth.getCurrentUser().getEmail();
+        if (userEmail == null) {
+            return; // Kein Benutzer eingeloggt
+        }
+
         CollectionReference ratingsRef = db.collection("ProductRatings").document(productTitle).collection("Ratings");
-        Map<String, Object> ratingData = new HashMap<>();
-        ratingData.put("rating", rating);
-        ratingsRef.add(ratingData);
+
+        ratingsRef.whereEqualTo("userEmail", userEmail).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                if (task.getResult().isEmpty()) {
+                    // Neues Rating hinzufügen
+                    Map<String, Object> ratingData = new HashMap<>();
+                    ratingData.put("userEmail", userEmail);
+                    ratingData.put("rating", rating);
+                    ratingsRef.add(ratingData);
+                } else {
+                    // Vorhandene Bewertung aktualisieren
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        document.getReference().update("rating", rating);
+                    }
+                }
+            }
+        });
     }
 
     public void getAverageRatingFromFirebase(String productTitle, RatingBar ratingBar) {

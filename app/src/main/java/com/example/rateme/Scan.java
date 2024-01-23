@@ -49,7 +49,8 @@ public class Scan extends Fragment {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 if (fromUser && !currentProductTitle.isEmpty()) {
-                    ratingManager.saveRatingToFirebase(currentProductTitle, rating);
+                    // Speichert oder aktualisiert die Bewertung in Firestore
+                    ratingManager.saveOrUpdateRating(currentProductTitle, rating);
                 }
             }
         });
