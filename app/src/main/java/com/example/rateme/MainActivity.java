@@ -75,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResultReceived(String result) {
                 if ((result != null) && !result.equals("This Barcode is not available") && !result.equals("Error parsing API response, it looks like the API is down. You can try again later.")) {
+                    if (scannedProductDetails.contains(result)) {
+                        // Entfernen des vorhandenen Produkts um es erneut am anfang der liste hinzuzufügen.
+                        scannedProductDetails.remove(result);
+                    }
                     scannedProductDetails.add(0, result);
                     Scan.productDetailsLiveData.postValue(result);
                 } else {

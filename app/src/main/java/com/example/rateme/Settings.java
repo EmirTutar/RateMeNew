@@ -58,8 +58,6 @@ public class Settings extends Fragment {
         return root;
     }
 
-
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

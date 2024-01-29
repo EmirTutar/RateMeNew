@@ -33,7 +33,6 @@ public class History extends Fragment {
 
         Scan.productDetailsLiveData.observe(getViewLifecycleOwner(), newProductDetail -> {
             if (newProductDetail != null && !newProductDetail.isEmpty()) {
-                historyList.add(0, newProductDetail); // Fügt das neue Produkt am Anfang der Liste hinzu
                 adapter.notifyDataSetChanged();
             }
         });

@@ -103,12 +103,17 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/textViewHeadline"
+        android:layout_width="340dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="40dp"
         android:text="Settings"
-        android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="20dp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="173dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

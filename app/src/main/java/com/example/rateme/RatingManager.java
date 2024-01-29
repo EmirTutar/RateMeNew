@@ -21,7 +21,11 @@ public class RatingManager {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    public void saveOrUpdateRating(String productTitle, float rating) {
+    public interface RatingUpdateCallback {
+        void onRatingUpdated();
+    }
+
+    public void saveOrUpdateRating(String productTitle, float rating, RatingUpdateCallback callback) {
         String userEmail = firebaseAuth.getCurrentUser().getEmail();
         if (userEmail == null) {
             return; // Kein Benutzer eingeloggt
@@ -41,8 +45,10 @@ public class RatingManager {
                     // Vorhandene Bewertung aktualisieren
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         document.getReference().update("rating", rating);
+
                     }
                 }
+                callback.onRatingUpdated();
             }
         });
     }
