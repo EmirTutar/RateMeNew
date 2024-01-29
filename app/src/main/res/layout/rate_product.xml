@@ -4,10 +4,10 @@
 
     <TextView
         android:id="@+id/textViewRate"
-        android:layout_width="340dp"
+        android:layout_width="212dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="164dp"
@@ -19,8 +19,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="22dp"
         android:numStars="5"
         android:stepSize="1.0" />
 
@@ -31,6 +31,36 @@
         android:layout_below="@id/ratingBar"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:text="Submit Rating" />
+
+    <!-- Kommentareingabefeld -->
+
+    <EditText
+        android:id="@+id/commentEditText"
+        android:layout_width="389dp"
+        android:layout_height="77dp"
+        android:layout_below="@id/btnSubmitRating"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="37dp"
+        android:hint="Enter your comment" />
+
+    <Button
+        android:id="@+id/submitCommentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit Comment"
+        android:layout_below="@id/commentEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
+    <!-- RecyclerView für Kommentare -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/commentsRecyclerView"
+        android:layout_width="387dp"
+        android:layout_height="379dp"
+        android:layout_below="@id/submitCommentButton"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="27dp" />
+
 </RelativeLayout>

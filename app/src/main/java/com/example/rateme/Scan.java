@@ -96,7 +96,7 @@ public class Scan extends Fragment {
                 if(MainActivity.favouriteProductDetails.contains(productDetails.getText().toString())
                         || productDetails.getText().toString().equals("Scan a Product to get more Details")
                         || productDetails.getText().toString().equals("Wait for Response...")){
-                    Toast.makeText(getContext(), "Product cannot be added to Favourites", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Product already in Favourites", Toast.LENGTH_SHORT).show();
                 } else {
                     MainActivity.favouriteProductDetails.add(productDetails.getText().toString());
                     Toast.makeText(getContext(), "Product added to Favourites", Toast.LENGTH_SHORT).show();
@@ -108,7 +108,6 @@ public class Scan extends Fragment {
         return root;
     }
 
-    // Extrahiert den Titel aus dem Detailstring
     private String extractTitle(String details) {
         if (details.contains("Title: ")) {
             int startIndex = details.indexOf("Title: ") + "Title: ".length();
@@ -118,7 +117,6 @@ public class Scan extends Fragment {
         return "";
     }
 
-    // Aktualisiert die Bewertungsansicht
     private void updateRatingsView(String productTitle) {
         RatingBar ratingBarShowRating = binding.getRoot().findViewById(R.id.RatingBarShowRating);
         if (!productTitle.isEmpty()) {
