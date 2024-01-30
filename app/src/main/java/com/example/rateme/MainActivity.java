@@ -2,25 +2,22 @@ package com.example.rateme;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.rateme.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -34,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
-    FirebaseFirestore firebaseFirestore;
     TextView currentUserName, currentUserEmail;
 
     @Override
@@ -52,7 +48,18 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-
+        Button logoutButton = findViewById(R.id.logout);
+        logoutButton.setVisibility(View.INVISIBLE);
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+                if (destination.getId() == R.id.navigation_settings) {
+                    logoutButton.setVisibility(View.VISIBLE);
+                } else {
+                    logoutButton.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
     }
 
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -76,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
             public void onResultReceived(String result) {
                 if ((result != null) && !result.equals("This Barcode is not available") && !result.equals("Error parsing API response, it looks like the API is down. You can try again later.")) {
                     if (scannedProductDetails.contains(result)) {
-                        // Entfernen des vorhandenen Produkts um es erneut am anfang der liste hinzuzufügen.
                         scannedProductDetails.remove(result);
                     }
                     scannedProductDetails.add(0, result);

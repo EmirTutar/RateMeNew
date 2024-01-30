@@ -1,16 +1,15 @@
 package com.example.rateme;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 
-import androidx.lifecycle.MutableLiveData;
-
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -48,14 +47,17 @@ public class ApiRequest {
 
     private static void processApiResponse(String result, ApiCallback callback) {
         Log.d("ApiResponse", "Raw Response: " + result);
-
         try {
             JSONObject jsonObject = new JSONObject(result);
 
             if (jsonObject.has("product")) {
                 JSONObject productObject = jsonObject.getJSONObject("product");
-                String attributes = extractRequiredAttributes(productObject);
-                callback.onResultReceived(attributes);
+
+                String productDetails = extractRequiredAttributes(productObject);
+                List<String> imageUrls = extractImageUrls(productObject);
+
+                Scan.productDetailsLiveData.postValue(productDetails);
+                Scan.productImagesLiveData.postValue(imageUrls);
             } else {
                 Log.d("ApiResponse", "Barcode not found in database");
                 callback.onResultReceived("This Barcode is not available");
@@ -69,10 +71,12 @@ public class ApiRequest {
     private static String extractRequiredAttributes(JSONObject jsonObject) {
         StringBuilder result = new StringBuilder();
         try {
+
             if (jsonObject.has("title")) {
                 result.append("Title: ").append(jsonObject.getString("title")).append("\n");
                 Log.d("ApiResponse", "Extracted Attribute: " + jsonObject.getString("title"));
             }
+
             if (jsonObject.has("barcode_formats")) {
                 JSONObject barcodeObject = jsonObject.getJSONObject("barcode_formats");
 
@@ -84,6 +88,7 @@ public class ApiRequest {
                     Log.d("ApiResponse", "Extracted barcode_formats: " + key + ": " + value);
                 }
             }
+
             if (jsonObject.has("brand")) {
                 if(jsonObject.getString("brand").equals("null")){
                     if(jsonObject.has("manufacturer")){
@@ -95,6 +100,7 @@ public class ApiRequest {
                         Log.d("ApiResponse", "Extracted Attribute: " + jsonObject.getString("manufacturer"));
                         }
                     }
+
                 } else {
                     result.append("Brand: ").append(jsonObject.getString("brand")).append("\n");
                     Log.d("ApiResponse", "Extracted Attribute: " + jsonObject.getString("brand"));
@@ -105,4 +111,19 @@ public class ApiRequest {
         }
         return result.toString();
     }
+    private static List<String> extractImageUrls(JSONObject jsonObject) {
+        List<String> imageUrls = new ArrayList<>();
+        try {
+            if (jsonObject.has("images")) {
+                JSONArray imagesArray = jsonObject.getJSONArray("images");
+                for (int i = 0; i < imagesArray.length(); i++) {
+                    imageUrls.add(imagesArray.getString(i));
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return imageUrls;
+    }
+
 }

@@ -6,99 +6,126 @@
     android:layout_height="match_parent"
     tools:context=".Scan">
 
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="370dp"
+        android:layout_height="288dp"
+        android:layout_margin="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/productImageView"
+            android:layout_width="match_parent"
+            android:layout_height="288dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
+
+        <ImageButton
+            android:id="@+id/button_add_to_favourites"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="300dp"
+            android:layout_marginTop="230dp"
+            android:background="@drawable/background_button"
+            android:contentDescription="Adds_Product_to_Favourites"
+            android:src="@drawable/favorite_button"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/ImageView"
+            app:tint="@color/white" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_image" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout3"
+        android:layout_width="370dp"
+        android:layout_height="288dp"
+        android:layout_margin="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frameLayout2">
+
+        <TextView
+            android:id="@+id/product_details"
+            android:layout_width="361dp"
+            android:layout_height="230dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="10dp"
+            android:maxLines="8"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
+            android:text="Scan a Product to get more Details"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAverageRating" />
+
+        <TextView
+            android:id="@+id/textViewAverageRating"
+            android:layout_width="336dp"
+            android:layout_height="29dp"
+            android:layout_margin="11dp"
+            android:text="Rating:"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout2" />
+
+        <RatingBar
+            android:id="@+id/RatingBarShowRating"
+            android:layout_width="241dp"
+            android:layout_height="41dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="0"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:stepSize="1"
+            app:layout_constraintEnd_toEndOf="@+id/textViewAverageRating"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout2" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_image" />
+
+    </FrameLayout>
+
     <Button
         android:id="@+id/btnRateProduct"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="4dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="72dp"
         android:text="Rate Product"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/product_details"
-        app:layout_constraintStart_toStartOf="@+id/product_details" />
-
-    <TextView
-        android:id="@+id/textViewAverageRating"
-        android:layout_width="340dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="120dp"
-        android:text="Rating:"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/scanButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewHeadline"
-        android:layout_width="340dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="40dp"
-        android:text="Product Details"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/product_details"
-        android:layout_width="340dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:text="Scan a Product to get more Details"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewAverageRating"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHeadline"
-        app:layout_constraintVertical_bias="0.325" />
-
-    <RatingBar
-        android:id="@+id/RatingBarShowRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:numStars="5"
-        android:rating="0"
-        android:isIndicator="true"
-        android:stepSize="1.0"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewAverageRating"
-        app:layout_constraintEnd_toEndOf="@+id/textViewAverageRating" />
 
     <Button
         android:id="@+id/scanButton"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="72dp"
         android:text="Scan Barcode"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.891" />
-
-    <ImageButton
-        android:id="@+id/button_add_to_favourites"
-        android:layout_width="73dp"
-        android:layout_height="51dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="4dp"
-        android:background="@drawable/imagebutton_addtofavourites"
-        android:contentDescription="Adds_Product_to_Favourites"
-        android:src="@drawable/ic_favourites"
-        app:layout_constraintBottom_toBottomOf="@+id/product_details"
-        app:layout_constraintEnd_toEndOf="@+id/product_details"
-        app:tint="@color/white" />
-
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
