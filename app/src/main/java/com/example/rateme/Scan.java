@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,12 +24,20 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.example.rateme.databinding.ScanBinding;
 import com.google.zxing.integration.android.IntentIntegrator;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import com.bumptech.glide.Glide;
+
+
 public class Scan extends Fragment {
     private ScanBinding binding;
     private TextView productDetails;
     private RatingManager ratingManager;
     private String currentProductTitle = "";
     public static MutableLiveData<String> productDetailsLiveData = new MutableLiveData<>();
+    public static MutableLiveData<List<String>> productImagesLiveData = new MutableLiveData<>();
 
     private BroadcastReceiver ratingUpdateReceiver = new BroadcastReceiver() {
         @Override
@@ -44,7 +53,6 @@ public class Scan extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
         // Registrieren des BroadcastReceivers
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(ratingUpdateReceiver,
                 new IntentFilter("com.example.rateme.RATING_UPDATED"));
@@ -62,11 +70,21 @@ public class Scan extends Fragment {
             startActivity(intent);
         });
 
+        productImagesLiveData.observe(getViewLifecycleOwner(), new Observer<List<String>>() {
+            @Override
+            public void onChanged(List<String> imageUrls) {
+                if (!imageUrls.isEmpty()) {
+                    loadImageIntoView(imageUrls.get(0)); // Laden des ersten Bildes
+                }
+            }
+        });
+
         productDetailsLiveData.observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 productDetails.setText(s);
                 currentProductTitle = extractTitle(s); // Extrahiert den Titel
+                displayProductImages(s);
                 updateRatingsView(currentProductTitle);
 
                 if (!currentProductTitle.isEmpty() && !currentProductTitle.equals("Scan a Product to get more Details") && !currentProductTitle.equals("This Barcode is not available")) {
@@ -79,7 +97,6 @@ public class Scan extends Fragment {
                 }
             }
         });
-
         Button scanButton = root.findViewById(R.id.scanButton);
         scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +123,30 @@ public class Scan extends Fragment {
         });
 
         return root;
+    }
+    private void displayProductImages(String details) {
+        List<String> imageUrls = extractImageUrls(details);
+        if (!imageUrls.isEmpty()) {
+            loadImageIntoView(imageUrls.get(0)); // Laden des ersten Bildes als Beispiel
+        }
+    }
+    private List<String> extractImageUrls(String details) {
+        List<String> imageUrls = new ArrayList<>();
+        Scanner scanner = new Scanner(details);
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            if (line.startsWith("Image")) {
+                String imageUrl = line.substring(line.indexOf("http"));
+                imageUrls.add(imageUrl);
+            }
+        }
+        scanner.close();
+        return imageUrls;
+    }
+
+    private void loadImageIntoView(String imageUrl) {
+        ImageView imageView = binding.productImageView;
+        Glide.with(this).load(imageUrl).into(imageView);
     }
 
     private String extractTitle(String details) {

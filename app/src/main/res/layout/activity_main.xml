@@ -40,6 +40,7 @@
         android:layout_marginEnd="8dp"
         android:onClick="logout"
         android:text="Logout"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

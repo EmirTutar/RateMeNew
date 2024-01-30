@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,9 @@ public class Settings extends Fragment {
         binding = SettingsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        Button logoutButton = getActivity().findViewById(R.id.logout);
+        logoutButton.setVisibility(View.VISIBLE);
+
         final TextView username = binding.currentUserNameTextView;
         final TextView email = binding.currentUserEmailTextView;
         FirebaseFirestore firebaseFirestore=FirebaseFirestore.getInstance();
@@ -53,11 +57,8 @@ public class Settings extends Fragment {
                 Log.d("Tag", "onEvent: Document does not exist");
             }
         });
-        // mText.observe(getViewLifecycleOwner(), textView::setText);
-
         return root;
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
