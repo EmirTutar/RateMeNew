@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,8 +39,6 @@ public class Scan extends Fragment {
     private String currentProductTitle = "";
     public static MutableLiveData<String> productDetailsLiveData = new MutableLiveData<>();
     public static MutableLiveData<List<String>> productImagesLiveData = new MutableLiveData<>();
-    private ImageButton buttonAddToFavourites;
-    private ImageButton buttonAddToFavouritesFilled;
     private BroadcastReceiver ratingUpdateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -57,17 +56,6 @@ public class Scan extends Fragment {
 
         binding = ScanBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-        buttonAddToFavourites = root.findViewById(R.id.button_add_to_favourites);
-        buttonAddToFavouritesFilled = root.findViewById(R.id.button_add_to_favourites_filled);
-
-        buttonAddToFavourites.setOnClickListener(v -> {
-            handleFavouritesButton();
-        });
-
-        buttonAddToFavouritesFilled.setOnClickListener(v -> {
-            handleFavouritesButton();
-        });
 
         // Registrieren des BroadcastReceivers
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(ratingUpdateReceiver,
@@ -88,20 +76,34 @@ public class Scan extends Fragment {
             public void onChanged(List<String> imageUrls) {
                 if (!imageUrls.isEmpty()) {
                     loadImageIntoView(imageUrls.get(0)); // Laden des ersten Bildes
+                }else {
+                    ImageView imageView = binding.productImageView;
+                    imageView.setVisibility(View.GONE);
                 }
             }
         });
 
+        Button scanButton = root.findViewById(R.id.scanButton);
+        ProgressBar progressBar = root.findViewById(R.id.progressBar);
+        ProgressBar progressBar2 = root.findViewById(R.id.progressBar2);
+        scanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                productDetails.setText("Wait for Response...");
+                progressBar.setVisibility(View.VISIBLE);
+                progressBar2.setVisibility(View.VISIBLE);
+                new IntentIntegrator(requireActivity()).initiateScan();
+            }
+        });
         productDetailsLiveData.observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 productDetails.setText(s);
+                progressBar.setVisibility(View.GONE);
+                progressBar2.setVisibility(View.GONE);
                 currentProductTitle = extractTitle(s); // Extrahiert den Titel
                 displayProductImages(s);
                 updateRatingsView(currentProductTitle);
-
-                boolean isFavourite = MainActivity.favouriteProductDetails.contains(currentProductTitle);
-                updateFavouritesButtonVisibility(isFavourite);
 
                 if (!currentProductTitle.isEmpty() && !currentProductTitle.equals("Scan a Product to get more Details") && !currentProductTitle.equals("This Barcode is not available")) {
                     btnRateProduct.setVisibility(View.VISIBLE);
@@ -111,14 +113,6 @@ public class Scan extends Fragment {
                     RatingBar ratingBarShowRating = binding.getRoot().findViewById(R.id.RatingBarShowRating);
                     ratingBarShowRating.setRating(0);
                 }
-            }
-        });
-        Button scanButton = root.findViewById(R.id.scanButton);
-        scanButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                productDetails.setText("Wait for Response...");
-                new IntentIntegrator(requireActivity()).initiateScan();
             }
         });
 
@@ -180,28 +174,6 @@ public class Scan extends Fragment {
             ratingManager.getAverageRatingFromFirebase(productTitle, ratingBarShowRating);
         }
     }
-
-    private void handleFavouritesButton() {
-        String productTitle = extractTitle(productDetails.getText().toString());
-        if (!MainActivity.favouriteProductDetails.contains(productTitle)) {
-            MainActivity.favouriteProductDetails.add(productTitle);
-            updateFavouritesButtonVisibility(true);
-        } else {
-            MainActivity.favouriteProductDetails.remove(productTitle);
-            updateFavouritesButtonVisibility(false);
-        }
-    }
-
-    private void updateFavouritesButtonVisibility(boolean isFavourite) {
-        if (isFavourite) {
-            buttonAddToFavourites.setVisibility(View.INVISIBLE);
-            buttonAddToFavouritesFilled.setVisibility(View.VISIBLE);
-        } else {
-            buttonAddToFavourites.setVisibility(View.VISIBLE);
-            buttonAddToFavouritesFilled.setVisibility(View.INVISIBLE);
-        }
-    }
-
 
     @Override
     public void onDestroyView() {
