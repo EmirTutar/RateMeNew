@@ -31,12 +31,13 @@ public class History extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
-        Scan.productDetailsLiveData.observe(getViewLifecycleOwner(), newProductDetail -> {
-            if (newProductDetail != null && !newProductDetail.isEmpty()) {
-                adapter.notifyDataSetChanged();
-            }
-        });
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
     }
 
     @Override

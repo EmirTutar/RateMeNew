@@ -55,7 +55,7 @@ public class ApiRequest {
 
                 String productDetails = extractRequiredAttributes(productObject);
                 List<String> imageUrls = extractImageUrls(productObject);
-
+                callback.onResultReceived(productDetails);
                 Scan.productDetailsLiveData.postValue(productDetails);
                 Scan.productImagesLiveData.postValue(imageUrls);
             } else {
