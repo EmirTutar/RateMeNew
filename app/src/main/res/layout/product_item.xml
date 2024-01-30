@@ -14,6 +14,7 @@
         <ImageView
             android:id="@+id/delete_button"
             android:src="@drawable/ic_delete"
+            android:background="@drawable/background_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

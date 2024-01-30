@@ -38,7 +38,8 @@ public class Scan extends Fragment {
     private String currentProductTitle = "";
     public static MutableLiveData<String> productDetailsLiveData = new MutableLiveData<>();
     public static MutableLiveData<List<String>> productImagesLiveData = new MutableLiveData<>();
-
+    private ImageButton buttonAddToFavourites;
+    private ImageButton buttonAddToFavouritesFilled;
     private BroadcastReceiver ratingUpdateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -53,12 +54,24 @@ public class Scan extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        // Registrieren des BroadcastReceivers
-        LocalBroadcastManager.getInstance(getContext()).registerReceiver(ratingUpdateReceiver,
-                new IntentFilter("com.example.rateme.RATING_UPDATED"));
 
         binding = ScanBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        buttonAddToFavourites = root.findViewById(R.id.button_add_to_favourites);
+        buttonAddToFavouritesFilled = root.findViewById(R.id.button_add_to_favourites_filled);
+
+        buttonAddToFavourites.setOnClickListener(v -> {
+            handleFavouritesButton();
+        });
+
+        buttonAddToFavouritesFilled.setOnClickListener(v -> {
+            handleFavouritesButton();
+        });
+
+        // Registrieren des BroadcastReceivers
+        LocalBroadcastManager.getInstance(getContext()).registerReceiver(ratingUpdateReceiver,
+                new IntentFilter("com.example.rateme.RATING_UPDATED"));
 
         productDetails = root.findViewById(R.id.product_details);
         ratingManager = new RatingManager();
@@ -86,6 +99,9 @@ public class Scan extends Fragment {
                 currentProductTitle = extractTitle(s); // Extrahiert den Titel
                 displayProductImages(s);
                 updateRatingsView(currentProductTitle);
+
+                boolean isFavourite = MainActivity.favouriteProductDetails.contains(currentProductTitle);
+                updateFavouritesButtonVisibility(isFavourite);
 
                 if (!currentProductTitle.isEmpty() && !currentProductTitle.equals("Scan a Product to get more Details") && !currentProductTitle.equals("This Barcode is not available")) {
                     btnRateProduct.setVisibility(View.VISIBLE);
@@ -164,6 +180,28 @@ public class Scan extends Fragment {
             ratingManager.getAverageRatingFromFirebase(productTitle, ratingBarShowRating);
         }
     }
+
+    private void handleFavouritesButton() {
+        String productTitle = extractTitle(productDetails.getText().toString());
+        if (!MainActivity.favouriteProductDetails.contains(productTitle)) {
+            MainActivity.favouriteProductDetails.add(productTitle);
+            updateFavouritesButtonVisibility(true);
+        } else {
+            MainActivity.favouriteProductDetails.remove(productTitle);
+            updateFavouritesButtonVisibility(false);
+        }
+    }
+
+    private void updateFavouritesButtonVisibility(boolean isFavourite) {
+        if (isFavourite) {
+            buttonAddToFavourites.setVisibility(View.INVISIBLE);
+            buttonAddToFavouritesFilled.setVisibility(View.VISIBLE);
+        } else {
+            buttonAddToFavourites.setVisibility(View.VISIBLE);
+            buttonAddToFavouritesFilled.setVisibility(View.INVISIBLE);
+        }
+    }
+
 
     @Override
     public void onDestroyView() {
