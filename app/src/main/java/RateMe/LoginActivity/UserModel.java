@@ -1,4 +1,4 @@
-package com.example.rateme;
+package RateMe.LoginActivity;
 
 public class UserModel {
 

@@ -1,4 +1,4 @@
-package com.example.rateme;
+package RateMe.SettingsActivity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.rateme.R;
 import com.example.rateme.databinding.SettingsBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;

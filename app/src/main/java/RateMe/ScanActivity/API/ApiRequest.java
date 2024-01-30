@@ -1,6 +1,8 @@
-package com.example.rateme;
+package RateMe.ScanActivity.API;
 
 import android.util.Log;
+
+import RateMe.ScanActivity.Scan.Scan;
 
 import org.json.JSONArray;
 import org.json.JSONException;

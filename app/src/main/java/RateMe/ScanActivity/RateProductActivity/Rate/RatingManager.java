@@ -1,4 +1,4 @@
-package com.example.rateme;
+package RateMe.ScanActivity.RateProductActivity.Rate;
 
 import android.util.Log;
 import android.widget.RatingBar;

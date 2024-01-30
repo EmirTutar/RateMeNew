@@ -1,4 +1,4 @@
-package com.example.rateme;
+package RateMe.ScanActivity.RateProductActivity.Comment;
 
 public class Comment {
     private String id;

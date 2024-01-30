@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/navigation_scan"
-        android:name="com.example.rateme.Scan"
+        android:name="RateMe.ScanActivity.Scan.Scan"
         tools:layout="@layout/scan" />
 
     <fragment
         android:id="@+id/navigation_history"
-        android:name="com.example.rateme.History"
+        android:name="RateMe.HistoryActivity.History"
         tools:layout="@layout/history" />
 
     <fragment
         android:id="@+id/navigation_favourites"
-        android:name="com.example.rateme.Favourites"
+        android:name="RateMe.FavouritesActivity.Favourites"
         tools:layout="@layout/favourites" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.example.rateme.Settings"
+        android:name="RateMe.SettingsActivity.Settings"
         tools:layout="@layout/settings" />
 
 </navigation>

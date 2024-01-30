@@ -1,4 +1,4 @@
-package com.example.rateme;
+package RateMe.LoginActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -16,6 +16,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import RateMe.MainActivity.MainActivity;
+import com.example.rateme.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

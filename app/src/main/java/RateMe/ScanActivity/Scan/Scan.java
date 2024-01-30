@@ -1,4 +1,4 @@
-package com.example.rateme;
+package RateMe.ScanActivity.Scan;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -22,6 +22,12 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import RateMe.FavouritesActivity.Favourites;
+import RateMe.MainActivity.MainActivity;
+import RateMe.ScanActivity.RateProductActivity.Rate.RateProduct;
+import RateMe.ScanActivity.RateProductActivity.Rate.RatingManager;
+
+import com.example.rateme.R;
 import com.example.rateme.databinding.ScanBinding;
 import com.google.zxing.integration.android.IntentIntegrator;
 

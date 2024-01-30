@@ -1,4 +1,4 @@
-package com.example.rateme;
+package RateMe.MainActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,10 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.rateme.R;
+import RateMe.ScanActivity.API.ApiRequest;
+import RateMe.LoginActivity.Welcome;
+import RateMe.ScanActivity.Scan.Scan;
 import com.example.rateme.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.zxing.integration.android.IntentIntegrator;

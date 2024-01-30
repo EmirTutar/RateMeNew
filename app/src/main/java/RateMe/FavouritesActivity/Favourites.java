@@ -1,4 +1,4 @@
-package com.example.rateme;
+package RateMe.FavouritesActivity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,10 +12,9 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import RateMe.MainActivity.MainActivity;
+import com.example.rateme.R;
 import com.example.rateme.databinding.FavouritesBinding;
-import androidx.annotation.Nullable;
-
-import java.util.List;
 
 public class Favourites extends Fragment {
 
