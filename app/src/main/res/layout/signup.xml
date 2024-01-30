@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_login_register"
-    tools:context=".MainActivity">
+    tools:context="RateMe.MainActivity.MainActivity">
 
     <TextView
         android:id="@+id/textViewRateMe"

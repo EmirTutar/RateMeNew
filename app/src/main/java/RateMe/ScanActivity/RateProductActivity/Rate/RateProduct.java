@@ -1,6 +1,6 @@
-package com.example.rateme;
+package RateMe.ScanActivity.RateProductActivity.Rate;
 
-import com.example.rateme.UserModel;
+import com.example.rateme.R;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,12 +15,12 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import RateMe.ScanActivity.RateProductActivity.Comment.Comment;
+import RateMe.ScanActivity.RateProductActivity.Comment.CommentsAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-
-import com.example.rateme.Comment;
 
 import java.util.ArrayList;
 import java.util.HashMap;

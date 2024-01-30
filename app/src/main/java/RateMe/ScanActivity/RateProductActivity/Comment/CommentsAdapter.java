@@ -1,4 +1,4 @@
-package com.example.rateme;
+package RateMe.ScanActivity.RateProductActivity.Comment;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.rateme.Comment;
+import com.example.rateme.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -23,7 +23,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
         this.currentProductTitle = currentProductTitle;
         this.commentsList = commentsList;
     }
-    public void setComments(List<com.example.rateme.Comment> commentsList) {
+    public void setComments(List<Comment> commentsList) {
         this.commentsList = commentsList;
         notifyDataSetChanged();
     }

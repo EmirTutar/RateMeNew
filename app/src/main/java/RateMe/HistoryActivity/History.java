@@ -1,4 +1,4 @@
-package com.example.rateme;
+package RateMe.HistoryActivity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import RateMe.MainActivity.MainActivity;
+import com.example.rateme.R;
 import com.example.rateme.databinding.HistoryBinding;
 
 import java.util.ArrayList;
