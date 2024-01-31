@@ -12,6 +12,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Der "RatingManager" verwaltet die Interaktionen mit der Firebase Firestore-Datenbank in Bezug auf Produktbewertungen.
+ * Diese Klasse stellt Methoden zur Verfügung, um Bewertungen zu speichern, zu aktualisieren und durchschnittliche Bewertungen abzurufen.
+ */
+
 public class RatingManager {
     private FirebaseFirestore db;
     private FirebaseAuth firebaseAuth;
@@ -53,7 +58,7 @@ public class RatingManager {
         });
     }
 
-    public void getAverageRatingFromFirebase(String productTitle, RatingBar ratingBar) {
+    public void getAverageRating(String productTitle, RatingBar ratingBar) {
         CollectionReference ratingsRef = db.collection("ProductRatings").document(productTitle).collection("Ratings");
 
         ratingsRef.get().addOnCompleteListener(task -> {

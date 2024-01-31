@@ -32,14 +32,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
 
-    <Button
+    <ImageButton
         android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="52dp"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:onClick="logout"
-        android:text="Logout"
+        android:src="@drawable/logout_btn"
+        app:tint="@color/green"
+        android:background="@drawable/background_image"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

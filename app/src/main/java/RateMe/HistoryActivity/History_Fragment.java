@@ -16,7 +16,14 @@ import com.example.rateme.databinding.HistoryBinding;
 
 import java.util.ArrayList;
 import java.util.List;
-public class History extends Fragment {
+
+/**
+ * History ist ein Fragment, das die Scanhistory des Benutzers anzeigt.
+ * Es zeigt eine Liste der gescannten Produkte an, wobei jedes Produkt in einem RecyclerView dargestellt wird.
+ * Die Liste wird aus den in der MainActivity gespeicherten gescannten Produktdetails generiert.
+ */
+
+public class History_Fragment extends Fragment {
 
     private HistoryBinding binding;
     private RecyclerView recyclerView;

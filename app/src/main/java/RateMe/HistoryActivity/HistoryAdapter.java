@@ -12,6 +12,13 @@ import com.example.rateme.R;
 
 import java.util.List;
 
+/**
+ * HistoryAdapter ist ein RecyclerView-Adapter, der für die Darstellung der gescannten Produkte
+ * in der History-Liste verantwortlich ist. Er verwaltet eine Liste von Produkt-Strings und stellt
+ * diese in der RecyclerView dar. Der Adapter ermöglicht es auch, Produkte aus der Liste zu entfernen.
+ */
+
+
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
     private List<String> productList;
 
@@ -30,16 +37,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         String product = productList.get(position);
         holder.productTextView.setText(product);
 
-        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Benutzen Sie holder.getAdapterPosition() anstelle der position
-                int currentPosition = holder.getAdapterPosition();
-                if (currentPosition != RecyclerView.NO_POSITION) {
-                    productList.remove(currentPosition);
-                    notifyItemRemoved(currentPosition);
-                    notifyItemRangeChanged(currentPosition, productList.size());
-                }
+        holder.deleteButton.setOnClickListener(v -> {
+            int currentPosition = holder.getAdapterPosition();
+            if (currentPosition != RecyclerView.NO_POSITION) {
+                productList.remove(currentPosition);
+                notifyItemRemoved(currentPosition);
+                notifyItemRangeChanged(currentPosition, productList.size());
             }
         });
     }

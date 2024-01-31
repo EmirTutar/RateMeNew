@@ -16,13 +16,19 @@ import RateMe.MainActivity.MainActivity;
 import com.example.rateme.R;
 import com.example.rateme.databinding.FavouritesBinding;
 
-public class Favourites extends Fragment {
+/**
+ * Favourites ist ein Fragment, das die Lieblingsprodukte des Benutzers anzeigt.
+ * Es verwendet einen RecyclerView, um die Produktdetails in einer Liste darzustellen.
+ * Benutzer können Produkte zu ihren Favoriten hinzufügen und aus dieser Liste entfernen.
+ */
+
+public class Favourites_Fragment extends Fragment {
 
     private static FavouritesAdapter adapter;
     private FavouritesBinding binding;
     private final MutableLiveData<String> mText;
 
-    public Favourites() {
+    public Favourites_Fragment() {
         mText = new MutableLiveData<>();
         mText.setValue("Favourites");
     }
