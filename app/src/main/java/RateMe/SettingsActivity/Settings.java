@@ -5,11 +5,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 
@@ -18,11 +17,8 @@ import com.example.rateme.databinding.SettingsBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-
-import java.util.concurrent.Executor;
 
 public class Settings extends Fragment {
 
@@ -39,7 +35,7 @@ public class Settings extends Fragment {
         binding = SettingsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        Button logoutButton = getActivity().findViewById(R.id.logout);
+        ImageButton logoutButton = getActivity().findViewById(R.id.logout);
         logoutButton.setVisibility(View.VISIBLE);
 
         final TextView username = binding.currentUserNameTextView;

@@ -1,13 +1,9 @@
 package RateMe.MainActivity.Navigation;
 
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 
 import com.example.rateme.R;
 
@@ -20,9 +16,9 @@ import com.example.rateme.R;
 public class NavigationManager {
 
     private final NavController navController;
-    private final Button logoutButton;
+    private final ImageButton logoutButton;
 
-    public NavigationManager(NavController navController, Button logoutButton) {
+    public NavigationManager(NavController navController, ImageButton logoutButton) {
         this.navController = navController;
         this.logoutButton = logoutButton;
         setupNavigation();
