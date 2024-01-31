@@ -2,7 +2,7 @@ package RateMe.ScanActivity.API;
 
 import android.util.Log;
 
-import RateMe.ScanActivity.Scan.Scan;
+import RateMe.ScanActivity.Scan.Scan_Fragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,8 +58,8 @@ public class ApiRequest {
                 String productDetails = extractRequiredAttributes(productObject);
                 List<String> imageUrls = extractImageUrls(productObject);
                 callback.onResultReceived(productDetails);
-                Scan.productDetailsLiveData.postValue(productDetails);
-                Scan.productImagesLiveData.postValue(imageUrls);
+                Scan_Fragment.productDetailsLiveData.postValue(productDetails);
+                Scan_Fragment.productImagesLiveData.postValue(imageUrls);
             } else {
                 Log.d("ApiResponse", "Barcode not found in database");
                 callback.onResultReceived("This Barcode is not available");

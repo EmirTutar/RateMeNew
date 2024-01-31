@@ -1,19 +1,26 @@
 package RateMe.ScanActivity.RateProductActivity.Comment;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.rateme.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
+
+/**
+ * Der "CommentsAdapter" ist ein Adapter für ein RecyclerView, der die Darstellung von Kommentaren
+ * in der RateProduct-Aktivität ermöglicht. Er bindet die Daten aus der Kommentarliste
+ * an die Ansichten im RecyclerView. Der Adapter verwaltet auch die Darstellung von Kommentaren
+ * und ermöglicht das Löschen von Kommentaren durch den Benutzer.
+ */
 
 public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHolder> {
     private List<Comment> commentsList;

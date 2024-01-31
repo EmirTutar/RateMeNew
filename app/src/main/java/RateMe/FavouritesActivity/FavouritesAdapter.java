@@ -12,6 +12,13 @@ import com.example.rateme.R;
 
 import java.util.List;
 
+/**
+ * FavouritesAdapter ist ein RecyclerView-Adapter, der für die Darstellung der Lieblingsprodukte
+ * in der Favourites-Liste verantwortlich ist. Er verwaltet eine Liste von Produkt-Strings und
+ * stellt diese in der RecyclerView dar. Der Adapter ermöglicht es auch, Produkte aus der Liste zu entfernen.
+ */
+
+
 public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.ViewHolder> {
     private List<String> favouritesList;
 
@@ -30,16 +37,13 @@ public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.Vi
         String product = favouritesList.get(position);
         holder.productTextView.setText(product);
 
-        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int currentPosition = holder.getAdapterPosition();
-                if (currentPosition != RecyclerView.NO_POSITION) {
-                    favouritesList.remove(currentPosition);
-                    notifyItemRemoved(currentPosition);
-                    notifyItemRangeChanged(currentPosition, favouritesList.size());
-                }}
-        });
+        holder.deleteButton.setOnClickListener(v -> {
+            int currentPosition = holder.getAdapterPosition();
+            if (currentPosition != RecyclerView.NO_POSITION) {
+                favouritesList.remove(currentPosition);
+                notifyItemRemoved(currentPosition);
+                notifyItemRangeChanged(currentPosition, favouritesList.size());
+            }});
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

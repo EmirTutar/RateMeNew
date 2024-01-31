@@ -1,5 +1,10 @@
 package RateMe.ScanActivity.RateProductActivity.Comment;
 
+/**
+ * Die Klasse "Comment" repräsentiert ein Kommentarobjekt, das in der RateProduct-Aktivität verwendet wird.
+ * Sie dient als Datenmodell für jeden Kommentar, der in der Firebase Firestore-Datenbank gespeichert wird.
+ */
+
 public class Comment {
     private String id;
     private String userName;
