@@ -4,43 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_login_register"
+    android:background="@drawable/background_intro"
     tools:context="RateMe.MainActivity.MainActivity">
 
     <TextView
         android:id="@+id/textViewRateMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="35dp"
         android:text="@string/loginUpperCase"
-        android:textColor="#df7154"
-        android:textSize="55sp"
+        android:textColor="@color/white"
+        android:textSize="65sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:importantForAccessibility="no"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRateMe"
-        app:srcCompat="@drawable/logo_login" />
-
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
         android:layout_marginBottom="5dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRateMe"
         app:layout_constraintVertical_bias="0.721">
 
         <EditText
@@ -98,16 +87,14 @@
 
         <Button
             android:id="@+id/buttonLogin"
-            style="@android:style/Widget.Button"
+            android:background="@drawable/background_btn_intro"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
-
             android:layout_marginBottom="8dp"
-            android:background="@drawable/btn_orange"
             android:text="@string/SignUpUpperCase"
             android:textColor="#ffffff"
             android:textSize="24sp"
