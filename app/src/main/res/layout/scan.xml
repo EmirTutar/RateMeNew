@@ -8,7 +8,7 @@
 
     <FrameLayout
         android:id="@+id/frameLayout2"
-        android:layout_width="370dp"
+        android:layout_width="match_parent"
         android:layout_height="288dp"
         android:layout_margin="15dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,19 +21,31 @@
             android:layout_width="match_parent"
             android:layout_height="288dp"
             android:adjustViewBounds="true"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/noImageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="No Image Available"
+            android:textSize="16dp"
+            android:textStyle="bold"
+             />
 
         <ImageButton
             android:id="@+id/button_add_to_favourites"
             android:layout_width="52dp"
             android:layout_height="48dp"
-            android:layout_marginStart="305dp"
-            android:layout_marginTop="230dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/background_image"
             android:contentDescription="Adds_Product_to_Favourites"
             android:src="@drawable/ic_favourites"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/ImageView"
             app:tint="@color/green" />
@@ -42,6 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/background_image" />
+
     </FrameLayout>
 
     <ProgressBar
@@ -66,7 +79,7 @@
 
     <FrameLayout
         android:id="@+id/frameLayout3"
-        android:layout_width="370dp"
+        android:layout_width="match_parent"
         android:layout_height="288dp"
         android:layout_margin="15dp"
         app:layout_constraintEnd_toEndOf="parent"

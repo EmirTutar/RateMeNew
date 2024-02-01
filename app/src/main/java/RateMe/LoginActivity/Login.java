@@ -26,6 +26,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * Die Login-Klasse ermöglicht es Benutzern, sich mit ihren Anmeldedaten einzuloggen.
+ * Sie stellt Funktionen zum Einloggen, Registrieren eines neuen Kontos und Zurücksetzen des Passworts bereit.
+ * Nutzt Firebase Authentication für den Anmeldeprozess und bietet visuelles Feedback durch einen Ladebalken.
+ */
+
 public class Login extends AppCompatActivity {
 
     EditText editTextEmail, editTextPassword;

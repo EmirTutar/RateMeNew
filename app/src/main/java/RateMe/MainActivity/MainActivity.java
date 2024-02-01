@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements BarcodeScanner.On
             if (result != null && result.getContents() != null) {
                 String scannedData = result.getContents();
                 ApiRequestHandler.initiateApiRequest(scannedData, apiResult -> {
-                    // Verarbeiten Sie hier das Ergebnis
                     if (!apiResult.equals("This Barcode is not available") && !apiResult.equals("Error parsing API response")) {
                         updateScannedProductDetails(apiResult);
                     }
@@ -88,7 +87,6 @@ public class MainActivity extends AppCompatActivity implements BarcodeScanner.On
         scannedProductDetails.add(0, result);
         Scan_Fragment.productDetailsLiveData.postValue(result);
     }
-
 
     @Override
     public boolean onSupportNavigateUp() {

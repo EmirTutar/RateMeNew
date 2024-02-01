@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="RateMe.SettingsActivity.Settings"
+        android:name="RateMe.SettingsActivity.SettingsFragment"
         tools:layout="@layout/settings" />
 
 </navigation>
