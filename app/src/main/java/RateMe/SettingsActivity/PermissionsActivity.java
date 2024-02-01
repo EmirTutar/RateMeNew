@@ -14,6 +14,11 @@ import androidx.core.content.ContextCompat;
 
 import com.example.rateme.R;
 
+/**
+ * Verwaltet Benutzerberechtigungen, speziell für die Kamera. Erlaubt Benutzern, die
+ * Kameraberechtigung zu aktivieren. Eine Deaktivierung über die App ist nicht möglich.
+ */
+
 public class PermissionsActivity extends AppCompatActivity {
 
     private static final int CAMERA_REQUEST_CODE = 100;

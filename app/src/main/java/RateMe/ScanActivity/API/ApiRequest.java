@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import RateMe.ScanActivity.Scan.Scan_Fragment;
+import RateMe.ScanActivity.Scan.ScanFragment;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -74,8 +74,8 @@ public class ApiRequest {
                 String productDetails = extractRequiredAttributes(productObject);
                 List<String> imageUrls = extractImageUrls(productObject);
                 callback.onResultReceived(productDetails);
-                Scan_Fragment.productDetailsLiveData.postValue(productDetails);
-                Scan_Fragment.productImagesLiveData.postValue(imageUrls);
+                ScanFragment.productDetailsLiveData.postValue(productDetails);
+                ScanFragment.productImagesLiveData.postValue(imageUrls);
             } else {
                 Log.d("ApiResponse", "Barcode not found in database");
                 callback.onResultReceived("This Barcode is not available");

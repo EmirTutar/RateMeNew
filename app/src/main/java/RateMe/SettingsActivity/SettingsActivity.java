@@ -6,6 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rateme.R;
 
+/**
+ * Einstiegspunkt für die Einstellungen der App. Erlaubt den Zugriff auf Unterseiten wie
+ * Profil, Berechtigungen und Über Uns.
+ */
+
 public class SettingsActivity extends AppCompatActivity {
 
     @Override

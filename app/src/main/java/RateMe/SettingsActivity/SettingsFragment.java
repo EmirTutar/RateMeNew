@@ -12,6 +12,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.rateme.R;
 
+/**
+ * Zeigt eine Liste von Einstellungsoptionen an. Nutzer können von hier aus zu den
+ * Detailseiten für Profil, Berechtigungen und Über Uns navigieren.
+ */
+
 public class SettingsFragment extends Fragment {
 
     @Override

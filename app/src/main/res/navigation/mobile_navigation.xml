@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/navigation_scan"
-        android:name="RateMe.ScanActivity.Scan.Scan_Fragment"
+        android:name="RateMe.ScanActivity.Scan.ScanFragment"
         tools:layout="@layout/activity_scan" />
 
     <fragment
         android:id="@+id/navigation_history"
-        android:name="RateMe.HistoryActivity.History_Fragment"
+        android:name="RateMe.HistoryActivity.HistoryFragment"
         tools:layout="@layout/activity_history" />
 
     <fragment
         android:id="@+id/navigation_favourites"
-        android:name="RateMe.FavouritesActivity.Favourites_Fragment"
+        android:name="RateMe.FavouritesActivity.FavouritesFragment"
         tools:layout="@layout/activity_favourites" />
 
     <fragment

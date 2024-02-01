@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rateme.R;
 
+/**
+ * Stellt Informationen über die App und der Entwickler bereit.
+ */
+
 public class AboutUsActivity extends AppCompatActivity {
 
     @Override

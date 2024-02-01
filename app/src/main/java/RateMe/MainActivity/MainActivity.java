@@ -24,7 +24,7 @@ import java.util.List;
 import RateMe.LoginActivity.Welcome;
 import RateMe.MainActivity.Barcode.BarcodeScanner;
 import RateMe.MainActivity.Navigation.NavigationManager;
-import RateMe.ScanActivity.Scan.Scan_Fragment;
+import RateMe.ScanActivity.Scan.ScanFragment;
 
 /**
  * MainActivity ist die Hauptaktivität der Anwendung.
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements BarcodeScanner.On
             scannedProductDetails.remove(result);
         }
         scannedProductDetails.add(0, result);
-        Scan_Fragment.productDetailsLiveData.postValue(result);
+        ScanFragment.productDetailsLiveData.postValue(result);
     }
 
     @Override

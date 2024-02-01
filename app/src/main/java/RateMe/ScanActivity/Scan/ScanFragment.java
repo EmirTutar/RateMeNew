@@ -22,7 +22,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 
 import java.util.List;
 
-import RateMe.FavouritesActivity.Favourites_Fragment;
+import RateMe.FavouritesActivity.FavouritesFragment;
 import RateMe.MainActivity.MainActivity;
 import RateMe.ScanActivity.RateProductActivity.Rate.RateProduct;
 import RateMe.ScanActivity.RateProductActivity.Rate.RatingManager;
@@ -39,7 +39,7 @@ import RateMe.ScanActivity.RateProductActivity.Rate.RatingManager;
  * zu verwalten.
  */
 
-public class Scan_Fragment extends Fragment {
+public class ScanFragment extends Fragment {
     private ActivityScanBinding binding;
     private ScanUIManager uiManager;
     private ScanDataManager dataManager;
@@ -139,14 +139,13 @@ public class Scan_Fragment extends Fragment {
         }
     }
 
-
     private void handleAddToFavourites() {
         if (MainActivity.favouriteProductDetails.contains(currentProductTitle)) {
             Toast.makeText(getContext(), "Product already in Favourites", Toast.LENGTH_SHORT).show();
         } else {
             MainActivity.favouriteProductDetails.add(currentProductTitle);
             Toast.makeText(getContext(), "Product added to Favourites", Toast.LENGTH_SHORT).show();
-            Favourites_Fragment.updateFavouritesList();
+            FavouritesFragment.updateFavouritesList();
         }
     }
 

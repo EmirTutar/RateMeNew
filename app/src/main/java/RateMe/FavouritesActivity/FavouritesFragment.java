@@ -23,13 +23,13 @@ import RateMe.MainActivity.MainActivity;
  * Benutzer können Produkte zu ihren Favoriten hinzufügen und aus dieser Liste entfernen.
  */
 
-public class Favourites_Fragment extends Fragment {
+public class FavouritesFragment extends Fragment {
 
     private static FavouritesAdapter adapter;
     private ActivityFavouritesBinding binding;
     private final MutableLiveData<String> mText;
 
-    public Favourites_Fragment() {
+    public FavouritesFragment() {
         mText = new MutableLiveData<>();
         mText.setValue("Favourites");
     }

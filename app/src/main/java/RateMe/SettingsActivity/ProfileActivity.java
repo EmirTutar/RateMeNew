@@ -11,6 +11,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Zeigt Benutzerinformationen wie Benutzername und E-Mail an. Erlaubt das Anzeigen und
+ * eventuelle Bearbeiten von Benutzerprofilinformationen.
+ */
+
 public class ProfileActivity extends AppCompatActivity {
 
     @Override

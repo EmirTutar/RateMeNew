@@ -24,7 +24,7 @@ import RateMe.MainActivity.MainActivity;
  * Die Liste wird aus den in der MainActivity gespeicherten gescannten Produktdetails generiert.
  */
 
-public class History_Fragment extends Fragment {
+public class HistoryFragment extends Fragment {
 
     private ActivityHistoryBinding binding;
     private HistoryAdapter adapter;
