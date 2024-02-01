@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--suppress XmlUnusedNamespaceDeclaration -->
+<?xml version="1.0" encoding="utf-8"?><!--suppress XmlUnusedNamespaceDeclaration -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -7,8 +6,9 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/rateMe"
@@ -32,13 +32,10 @@
         <activity
             android:name="RateMe.MainActivity.MainActivity"
             android:exported="true" />
-        <activity
-            android:name="RateMe.ScanActivity.RateProductActivity.Rate.RateProduct">
-        </activity>
+        <activity android:name="RateMe.ScanActivity.RateProductActivity.Rate.RateProduct"></activity>
         <activity android:name="RateMe.SettingsActivity.ProfileActivity" />
         <activity android:name="RateMe.SettingsActivity.PermissionsActivity" />
         <activity android:name="RateMe.SettingsActivity.AboutUsActivity" />
-
     </application>
 
 </manifest>
