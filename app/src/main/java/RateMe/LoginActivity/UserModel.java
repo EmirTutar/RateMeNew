@@ -12,7 +12,8 @@ public class UserModel {
 
     public UserModel(){
 
-    };
+    }
+
     public UserModel(String username, String email) {
         this.username = username;
         this.email = email;

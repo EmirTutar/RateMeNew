@@ -14,15 +14,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rateme.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
@@ -86,9 +80,7 @@ public class Register extends AppCompatActivity {
             confirmPassword = editTextConfirmPassword.getText().toString();
 
             Handler handler=new Handler();
-            handler.postDelayed(()->{
-                progressBar.setVisibility(View.GONE);
-            }, 2000);
+            handler.postDelayed(()-> progressBar.setVisibility(View.GONE), 2000);
 
             Query query = firebaseFirestore.collection("User")
                     .whereEqualTo("username", user);
@@ -141,53 +133,40 @@ public class Register extends AppCompatActivity {
 
             progressDialog.show();
             //create register account with firebase
-            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                FirebaseUser firebaseUser= mAuth.getCurrentUser();
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    FirebaseUser firebaseUser= mAuth.getCurrentUser();
 
-                                //send verification to email
-                                firebaseUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        Toast.makeText(Register.this, "Verification Email has been sent", Toast.LENGTH_SHORT).show();
+                    //send verification to email
+                    firebaseUser.sendEmailVerification().addOnSuccessListener(unused -> Toast.makeText(Register.this, "Verification Email has been sent", Toast.LENGTH_SHORT).show()).addOnFailureListener(e -> Log.d(Tag, "onFailure: Email not sent " + e.getMessage()));
+                    Toast.makeText(Register.this, "Account created", Toast.LENGTH_SHORT).show();
 
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.d(Tag, "onFailure: Email not sent "+ e.getMessage());
-                                    }
-                                });
-                                Toast.makeText(Register.this, "Account created", Toast.LENGTH_SHORT).show();
+                    //create in Firestore new User
+                    firebaseFirestore.collection("User")
+                            .document(FirebaseAuth.getInstance().getUid())
+                            .set(new UserModel(user, email));
 
-                                //create in Firestore new User
-                                firebaseFirestore.collection("User")
-                                        .document(FirebaseAuth.getInstance().getUid())
-                                        .set(new UserModel(user, email));
+                    progressDialog.cancel();
 
-                                progressDialog.cancel();
+                    //start Login after registration
+                    Intent intent = new Intent(getApplicationContext(), Login.class);
+                    startActivity(intent);
+                    finish();
 
-                                //start Login after registration
-                                Intent intent = new Intent(getApplicationContext(), Login.class);
-                                startActivity(intent);
-                                finish();
-
-                            } else {
-                                // Registrierung fehlgeschlagen
-                                Exception exception = task.getException();
-                                if (exception instanceof FirebaseAuthUserCollisionException) {
-                                    Toast.makeText(Register.this, "Email already exist", Toast.LENGTH_SHORT).show();
-                                } else if (exception instanceof FirebaseAuthWeakPasswordException) {
-                                    Toast.makeText(Register.this, "password is too weak", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    String errorMessage = exception.getMessage();
-                                    Toast.makeText(Register.this, "Error: "+ errorMessage.toString(), Toast.LENGTH_SHORT).show();
-                                }
-                                progressDialog.cancel();
-                            }
-                        }
+                } else {
+                    // Registrierung fehlgeschlagen
+                    Exception exception = task.getException();
+                    if (exception instanceof FirebaseAuthUserCollisionException) {
+                        Toast.makeText(Register.this, "Email already exist", Toast.LENGTH_SHORT).show();
+                    } else if (exception instanceof FirebaseAuthWeakPasswordException) {
+                        Toast.makeText(Register.this, "password is too weak", Toast.LENGTH_SHORT).show();
+                    } else {
+                        String errorMessage = exception.getMessage();
+                        //noinspection StringOperationCanBeSimplified
+                        Toast.makeText(Register.this, "Error: "+ errorMessage.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                    progressDialog.cancel();
+                }
             });
         });
 

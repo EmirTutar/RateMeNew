@@ -57,9 +57,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
                 FirebaseAuth.getInstance().getCurrentUser().getEmail().equals(comment.getEmail())) {
             holder.deleteButton.setVisibility(View.VISIBLE);
 
-            holder.deleteButton.setOnClickListener(v -> {
-                deleteComment(comment, position);
-            });
+            holder.deleteButton.setOnClickListener(v -> deleteComment(comment, position));
         } else {
             holder.deleteButton.setVisibility(View.GONE);
         }
@@ -76,9 +74,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
                     notifyItemRemoved(position);
                     Toast.makeText(context, "Comment deleted", Toast.LENGTH_SHORT).show();
                 })
-                .addOnFailureListener(e -> {
-                    Log.w("CommentsAdapter", "Error deleting comment", e);
-                });
+                .addOnFailureListener(e -> Log.w("CommentsAdapter", "Error deleting comment", e));
     }
 
     @Override

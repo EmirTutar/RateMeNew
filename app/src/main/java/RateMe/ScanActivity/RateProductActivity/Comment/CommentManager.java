@@ -76,14 +76,10 @@ public class CommentManager {
                             Toast.makeText(context, "Comment added", Toast.LENGTH_SHORT).show();
                             loadComments(commentsAdapter); // Kommentare neu laden
                         })
-                        .addOnFailureListener(e -> {
-                            Log.w("CommentManager", "Error adding comment", e);
-                        });
+                        .addOnFailureListener(e -> Log.w("CommentManager", "Error adding comment", e));
             } else {
                 Log.d("CommentManager", "Document does not exist");
             }
-        }).addOnFailureListener(e -> {
-            Log.w("CommentManager", "Error getting document", e);
-        });
+        }).addOnFailureListener(e -> Log.w("CommentManager", "Error getting document", e));
     }
 }

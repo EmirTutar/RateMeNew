@@ -34,8 +34,6 @@
         android:layout_marginTop="100dp"
         android:text="@string/submit_rating" />
 
-    <!-- Kommentareingabefeld -->
-
     <EditText
         android:id="@+id/commentEditText"
         android:layout_width="389dp"

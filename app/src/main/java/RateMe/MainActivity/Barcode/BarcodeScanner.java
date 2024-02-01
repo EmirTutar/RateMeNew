@@ -36,12 +36,7 @@ public class BarcodeScanner {
     public void handleActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null && result.getContents() != null) {
-            ApiRequestHandler.initiateApiRequest(result.getContents(), new ApiRequestHandler.ApiResultCallback() {
-                @Override
-                public void onApiResultReceived(String apiResult) {
-                    scanResultListener.onBarcodeScanResult(apiResult);
-                }
-            });
+            ApiRequestHandler.initiateApiRequest(result.getContents(), scanResultListener::onBarcodeScanResult);
         }
     }
 }

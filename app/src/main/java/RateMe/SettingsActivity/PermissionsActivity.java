@@ -1,6 +1,7 @@
 package RateMe.SettingsActivity;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Switch;
@@ -16,6 +17,7 @@ import com.example.rateme.R;
 public class PermissionsActivity extends AppCompatActivity {
 
     private static final int CAMERA_REQUEST_CODE = 100;
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     private Switch switchCameraPermission;
 
     @Override
@@ -33,7 +35,7 @@ public class PermissionsActivity extends AppCompatActivity {
                         new String[]{Manifest.permission.CAMERA},
                         CAMERA_REQUEST_CODE);
             } else {
-                Toast.makeText(this, "Berechtigung kann hier nicht widerrufen werden", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Permission cannot be revoked here.", Toast.LENGTH_LONG).show();
                 switchCameraPermission.setChecked(true);
             }
         });

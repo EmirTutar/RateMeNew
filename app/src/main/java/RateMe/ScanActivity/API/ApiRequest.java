@@ -53,6 +53,7 @@ public class ApiRequest {
             Log.d("ApiRequest", "API Request URL: " + request.url());
 
             try {
+                //noinspection resource
                 Response response = client.newCall(request).execute();
                 String result = response.body().string();
                 Log.d("ApiResponse", "API Response: " + result);
