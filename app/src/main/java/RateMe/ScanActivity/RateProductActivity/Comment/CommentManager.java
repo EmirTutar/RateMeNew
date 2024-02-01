@@ -8,16 +8,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.zxing.client.android.Intents;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import RateMe.ScanActivity.RateProductActivity.Rate.RateProduct;
-import RateMe.ScanActivity.RateProductActivity.Rate.RatingManager;
-import RateMe.ScanActivity.Scan.ScanUIManager;
 
 /**
  * Der "CommentManager" verwaltet das Laden, Hinzufügen und Löschen von Kommentaren zu einem spezifischen Produkt.

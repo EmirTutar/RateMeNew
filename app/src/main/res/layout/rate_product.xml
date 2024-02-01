@@ -11,8 +11,8 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="164dp"
-        android:text="Give a Rating:"
-        android:textSize="20dp" />
+        android:text="@string/give_a_rating"
+        android:textSize="20sp" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -32,7 +32,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:text="Submit Rating" />
+        android:text="@string/submit_rating" />
 
     <!-- Kommentareingabefeld -->
 
@@ -43,13 +43,13 @@
         android:layout_below="@id/btnSubmitRating"
         android:layout_marginStart="10dp"
         android:layout_marginTop="37dp"
-        android:hint="Enter your comment" />
+        android:hint="@string/enter_your_comment" />
 
     <Button
         android:id="@+id/submitCommentButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit Comment"
+        android:text="@string/submit_comment"
         android:layout_below="@id/commentEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"/>
