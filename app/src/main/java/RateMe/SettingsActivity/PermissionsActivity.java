@@ -23,7 +23,7 @@ public class PermissionsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.permissions);
+        setContentView(R.layout.activity_settings_permissions);
 
         switchCameraPermission = findViewById(R.id.switch_camera_permission);
 

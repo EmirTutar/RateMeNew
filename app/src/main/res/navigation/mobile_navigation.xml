@@ -8,21 +8,21 @@
     <fragment
         android:id="@+id/navigation_scan"
         android:name="RateMe.ScanActivity.Scan.Scan_Fragment"
-        tools:layout="@layout/scan" />
+        tools:layout="@layout/activity_scan" />
 
     <fragment
         android:id="@+id/navigation_history"
         android:name="RateMe.HistoryActivity.History_Fragment"
-        tools:layout="@layout/history" />
+        tools:layout="@layout/activity_history" />
 
     <fragment
         android:id="@+id/navigation_favourites"
         android:name="RateMe.FavouritesActivity.Favourites_Fragment"
-        tools:layout="@layout/favourites" />
+        tools:layout="@layout/activity_favourites" />
 
     <fragment
         android:id="@+id/navigation_settings"
         android:name="RateMe.SettingsActivity.SettingsFragment"
-        tools:layout="@layout/settings" />
+        tools:layout="@layout/activity_settings" />
 
 </navigation>

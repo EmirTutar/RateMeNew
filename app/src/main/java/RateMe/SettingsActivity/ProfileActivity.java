@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import com.example.rateme.databinding.ProfileBinding;
+import com.example.rateme.databinding.ActivitySettingsProfileBinding;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -18,7 +18,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        com.example.rateme.databinding.ProfileBinding binding = ProfileBinding.inflate(getLayoutInflater());
+        com.example.rateme.databinding.ActivitySettingsProfileBinding binding = ActivitySettingsProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         final TextView username = binding.currentUserNameTextView;

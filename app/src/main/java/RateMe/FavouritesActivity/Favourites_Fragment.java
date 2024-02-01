@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import RateMe.MainActivity.MainActivity;
 import com.example.rateme.R;
-import com.example.rateme.databinding.FavouritesBinding;
+import com.example.rateme.databinding.ActivityFavouritesBinding;
 
 /**
  * Favourites ist ein Fragment, das die Lieblingsprodukte des Benutzers anzeigt.
@@ -25,7 +25,7 @@ import com.example.rateme.databinding.FavouritesBinding;
 public class Favourites_Fragment extends Fragment {
 
     private static FavouritesAdapter adapter;
-    private FavouritesBinding binding;
+    private ActivityFavouritesBinding binding;
     private final MutableLiveData<String> mText;
 
     public Favourites_Fragment() {
@@ -36,7 +36,7 @@ public class Favourites_Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FavouritesBinding.inflate(inflater, container, false);
+        binding = ActivityFavouritesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textFavourites;

@@ -40,7 +40,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:onClick="logout"
-        android:src="@drawable/logout_btn"
+        android:src="@drawable/ic_logout"
         app:tint="@color/green"
         android:background="@drawable/background_image"
         android:visibility="invisible"

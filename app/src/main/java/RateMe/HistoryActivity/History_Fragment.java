@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import RateMe.MainActivity.MainActivity;
 import com.example.rateme.R;
-import com.example.rateme.databinding.HistoryBinding;
+import com.example.rateme.databinding.ActivityHistoryBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,13 +25,13 @@ import java.util.List;
 
 public class History_Fragment extends Fragment {
 
-    private HistoryBinding binding;
+    private ActivityHistoryBinding binding;
     private HistoryAdapter adapter;
     private List<String> historyList = new ArrayList<>();
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = HistoryBinding.inflate(inflater, container, false);
+        binding = ActivityHistoryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         RecyclerView recyclerView = root.findViewById(R.id.history_recycler_view);

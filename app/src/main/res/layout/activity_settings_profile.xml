@@ -32,7 +32,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/user_icon"
+                android:src="@drawable/ic_user"
                 android:contentDescription="@string/user_icon"
                 />
 
@@ -59,7 +59,7 @@
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/round_background_btn_settings"
+                android:background="@drawable/background_btn_settings"
                 android:paddingStart="30dp"
                 android:paddingEnd="30dp"
                 android:text="@string/edit_profile"
@@ -72,7 +72,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/round_back_grey"
+                android:background="@drawable/background_grey"
                 android:orientation="vertical"
                 android:padding="15dp">
 

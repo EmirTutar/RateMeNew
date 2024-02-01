@@ -37,7 +37,7 @@ public class RateProduct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.rate_product);
+        setContentView(R.layout.activity_scan_rate_product);
 
         ratingManager = new RatingManager();
 

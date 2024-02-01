@@ -17,7 +17,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.rateme.R;
-import com.example.rateme.databinding.ScanBinding;
+import com.example.rateme.databinding.ActivityScanBinding;
 import com.google.zxing.integration.android.IntentIntegrator;
 
 import java.util.List;
@@ -40,7 +40,7 @@ import RateMe.ScanActivity.RateProductActivity.Rate.RatingManager;
  */
 
 public class Scan_Fragment extends Fragment {
-    private ScanBinding binding;
+    private ActivityScanBinding binding;
     private ScanUIManager uiManager;
     private ScanDataManager dataManager;
     private ImageLoader imageLoader;
@@ -64,7 +64,7 @@ public class Scan_Fragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = ScanBinding.inflate(inflater, container, false);
+        binding = ActivityScanBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         setupUIManager();
