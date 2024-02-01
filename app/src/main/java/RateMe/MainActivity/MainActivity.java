@@ -24,7 +24,7 @@ import java.util.List;
 import RateMe.LoginActivity.Welcome;
 import RateMe.MainActivity.Barcode.BarcodeScanner;
 import RateMe.MainActivity.Navigation.NavigationManager;
-import RateMe.ScanActivity.Scan.Scan_Fragment;
+import RateMe.ScanActivity.Scan.ScanFragment;
 
 /**
  * MainActivity ist die Hauptaktivität der Anwendung.
@@ -33,7 +33,7 @@ import RateMe.ScanActivity.Scan.Scan_Fragment;
  * Zudem werden die Daten für die History und die Favoritenliste hier verwaltet.
  */
 
-public class MainActivity extends AppCompatActivity implements BarcodeScanner.OnBarcodeScanResultListener{
+public class MainActivity extends AppCompatActivity implements BarcodeScanner.OnBarcodeScanResultListener {
 
     public static List<String> scannedProductDetails = new ArrayList<>();
     public static List<String> favouriteProductDetails = new ArrayList<>();
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements BarcodeScanner.On
         // Verarbeiten des Scanergebnisses
         updateScannedProductDetails(result);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements BarcodeScanner.On
             scannedProductDetails.remove(result);
         }
         scannedProductDetails.add(0, result);
-        Scan_Fragment.productDetailsLiveData.postValue(result);
+        ScanFragment.productDetailsLiveData.postValue(result);
     }
 
     @Override

@@ -6,19 +6,24 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.rateme.databinding.ActivitySettingsProfileBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import com.example.rateme.databinding.ProfileBinding;
+/**
+ * Zeigt Benutzerinformationen wie Benutzername und E-Mail an. Erlaubt das Anzeigen und
+ * eventuelle Bearbeiten von Benutzerprofilinformationen.
+ */
 
 public class ProfileActivity extends AppCompatActivity {
 
+    /** @noinspection DataFlowIssue*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        com.example.rateme.databinding.ProfileBinding binding = ProfileBinding.inflate(getLayoutInflater());
+        com.example.rateme.databinding.ActivitySettingsProfileBinding binding = ActivitySettingsProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         final TextView username = binding.currentUserNameTextView;

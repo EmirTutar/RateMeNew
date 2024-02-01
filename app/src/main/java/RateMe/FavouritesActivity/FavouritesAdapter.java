@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rateme.R;
@@ -18,7 +19,6 @@ import java.util.List;
  * stellt diese in der RecyclerView dar. Der Adapter ermöglicht es auch, Produkte aus der Liste zu entfernen.
  */
 
-
 public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.ViewHolder> {
     private List<String> favouritesList;
 
@@ -26,9 +26,10 @@ public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.Vi
         this.favouritesList = favouritesList;
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rcv_item_product, parent, false);
         return new ViewHolder(view);
     }
 
@@ -43,7 +44,8 @@ public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.Vi
                 favouritesList.remove(currentPosition);
                 notifyItemRemoved(currentPosition);
                 notifyItemRangeChanged(currentPosition, favouritesList.size());
-            }});
+            }
+        });
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -61,6 +63,7 @@ public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.Vi
     public int getItemCount() {
         return favouritesList.size();
     }
+
     public void updateFavouritesList(List<String> newFavourites) {
         this.favouritesList = newFavourites;
         notifyDataSetChanged();

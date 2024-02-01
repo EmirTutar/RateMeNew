@@ -10,7 +10,7 @@ public class UserModel {
 
     String username, email;
 
-    public UserModel(){
+    public UserModel() {
 
     }
 

@@ -30,6 +30,7 @@ public class RatingManager {
         void onRatingUpdated();
     }
 
+    /** @noinspection DataFlowIssue*/
     public void saveOrUpdateRating(String productTitle, float rating, RatingUpdateCallback callback) {
         String userEmail = firebaseAuth.getCurrentUser().getEmail();
         if (userEmail == null) {

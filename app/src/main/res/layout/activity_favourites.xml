@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="RateMe.FavouritesActivity.Favourites_Fragment">
+    tools:context="RateMe.FavouritesActivity.FavouritesFragment">
 
     <TextView
         android:id="@+id/text_favourites"
@@ -27,10 +27,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_favourites"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/text_favourites">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewFavourites"

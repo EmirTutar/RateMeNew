@@ -28,16 +28,14 @@ import RateMe.ScanActivity.RateProductActivity.Comment.CommentsAdapter;
 
 public class RateProduct extends AppCompatActivity {
     private CommentsAdapter commentsAdapter;
-
     private CommentManager commentManager;
-
     private RatingManager ratingManager;
     private String currentProductTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.rate_product);
+        setContentView(R.layout.activity_scan_rate_product);
 
         ratingManager = new RatingManager();
 

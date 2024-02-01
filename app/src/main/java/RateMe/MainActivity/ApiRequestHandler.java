@@ -1,7 +1,7 @@
 package RateMe.MainActivity;
 
 import RateMe.ScanActivity.API.ApiRequest;
-import RateMe.ScanActivity.Scan.Scan_Fragment;
+import RateMe.ScanActivity.Scan.ScanFragment;
 
 /**
  * ApiRequestHandler ist zuständig für das Senden von Anfragen an die externe Barcode-API.
@@ -16,7 +16,7 @@ public class ApiRequestHandler {
 
     public static void initiateApiRequest(String barcode, ApiResultCallback callback) {
         ApiRequest.initiateApiRequest(barcode, result -> {
-            Scan_Fragment.productDetailsLiveData.postValue(result);
+            ScanFragment.productDetailsLiveData.postValue(result);
             callback.onApiResultReceived(result);
         });
 

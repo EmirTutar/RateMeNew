@@ -17,12 +17,12 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.rateme.R;
-import com.example.rateme.databinding.ScanBinding;
+import com.example.rateme.databinding.ActivityScanBinding;
 import com.google.zxing.integration.android.IntentIntegrator;
 
 import java.util.List;
 
-import RateMe.FavouritesActivity.Favourites_Fragment;
+import RateMe.FavouritesActivity.FavouritesFragment;
 import RateMe.MainActivity.MainActivity;
 import RateMe.ScanActivity.RateProductActivity.Rate.RateProduct;
 import RateMe.ScanActivity.RateProductActivity.Rate.RatingManager;
@@ -32,15 +32,15 @@ import RateMe.ScanActivity.RateProductActivity.Rate.RatingManager;
  * Diese Klasse ist verantwortlich für das Handling des Scan-Vorgangs,
  * Anzeigen von Produktdetails und Bildern und Interaktion mit anderen
  * Teilen der App wie Favoriten und Produktbewertungen.
- *
+ * <p>
  * Die Klasse nutzt MutableLiveData, um auf Änderungen der Produktdaten
  * zu reagieren und aktualisiert die UI entsprechend. Sie kommuniziert
  * mit verschiedenen Managern, um Aufgaben wie Bildladen und Datenmanagement
  * zu verwalten.
  */
 
-public class Scan_Fragment extends Fragment {
-    private ScanBinding binding;
+public class ScanFragment extends Fragment {
+    private ActivityScanBinding binding;
     private ScanUIManager uiManager;
     private ScanDataManager dataManager;
     private ImageLoader imageLoader;
@@ -64,7 +64,7 @@ public class Scan_Fragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = ScanBinding.inflate(inflater, container, false);
+        binding = ActivityScanBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         setupUIManager();
@@ -72,6 +72,7 @@ public class Scan_Fragment extends Fragment {
         setupImageLoader();
         setupRatingManager();
 
+        //noinspection DataFlowIssue
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(ratingUpdateReceiver, new IntentFilter("com.example.rateme.RATING_UPDATED"));
 
         setupButtons();
@@ -139,20 +140,20 @@ public class Scan_Fragment extends Fragment {
         }
     }
 
-
     private void handleAddToFavourites() {
         if (MainActivity.favouriteProductDetails.contains(currentProductTitle)) {
             Toast.makeText(getContext(), "Product already in Favourites", Toast.LENGTH_SHORT).show();
         } else {
             MainActivity.favouriteProductDetails.add(currentProductTitle);
             Toast.makeText(getContext(), "Product added to Favourites", Toast.LENGTH_SHORT).show();
-            Favourites_Fragment.updateFavouritesList();
+            FavouritesFragment.updateFavouritesList();
         }
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        //noinspection DataFlowIssue
         LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(ratingUpdateReceiver);
         binding = null;
     }

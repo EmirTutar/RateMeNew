@@ -12,9 +12,10 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import RateMe.MainActivity.MainActivity;
 import com.example.rateme.R;
-import com.example.rateme.databinding.FavouritesBinding;
+import com.example.rateme.databinding.ActivityFavouritesBinding;
+
+import RateMe.MainActivity.MainActivity;
 
 /**
  * Favourites ist ein Fragment, das die Lieblingsprodukte des Benutzers anzeigt.
@@ -22,13 +23,13 @@ import com.example.rateme.databinding.FavouritesBinding;
  * Benutzer können Produkte zu ihren Favoriten hinzufügen und aus dieser Liste entfernen.
  */
 
-public class Favourites_Fragment extends Fragment {
+public class FavouritesFragment extends Fragment {
 
     private static FavouritesAdapter adapter;
-    private FavouritesBinding binding;
+    private ActivityFavouritesBinding binding;
     private final MutableLiveData<String> mText;
 
-    public Favourites_Fragment() {
+    public FavouritesFragment() {
         mText = new MutableLiveData<>();
         mText.setValue("Favourites");
     }
@@ -36,7 +37,7 @@ public class Favourites_Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FavouritesBinding.inflate(inflater, container, false);
+        binding = ActivityFavouritesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textFavourites;
@@ -47,14 +48,15 @@ public class Favourites_Fragment extends Fragment {
         FavouritesAdapter adapter = new FavouritesAdapter(MainActivity.favouriteProductDetails);
         recyclerView.setAdapter(adapter);
 
-
         return root;
     }
+
     public static void updateFavouritesList() {
         if (adapter != null) {
             adapter.updateFavouritesList(MainActivity.favouriteProductDetails);
         }
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
