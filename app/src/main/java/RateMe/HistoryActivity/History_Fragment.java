@@ -26,7 +26,6 @@ import java.util.List;
 public class History_Fragment extends Fragment {
 
     private HistoryBinding binding;
-    private RecyclerView recyclerView;
     private HistoryAdapter adapter;
     private List<String> historyList = new ArrayList<>();
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -35,7 +34,7 @@ public class History_Fragment extends Fragment {
         binding = HistoryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        recyclerView = root.findViewById(R.id.history_recycler_view);
+        RecyclerView recyclerView = root.findViewById(R.id.history_recycler_view);
         adapter = new HistoryAdapter(MainActivity.scannedProductDetails);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);

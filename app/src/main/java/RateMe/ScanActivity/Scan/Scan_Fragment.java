@@ -83,7 +83,7 @@ public class Scan_Fragment extends Fragment {
     }
 
     private void setupUIManager() {
-        uiManager = new ScanUIManager(binding.productDetails, binding.productImageView, binding.RatingBarShowRating, binding.progressBar, binding.progressBar2);
+        uiManager = new ScanUIManager(binding.productDetails, binding.productImageView, binding.buttonAddToFavourites, binding.noImageTextView, binding.RatingBarShowRating, binding.progressBar, binding.progressBar2);
     }
 
     private void setupDataManager() {
@@ -117,6 +117,7 @@ public class Scan_Fragment extends Fragment {
     private void handleImageUrlsChange(List<String> imageUrls) {
         if (!imageUrls.isEmpty()) {
             imageLoader.loadImageIntoView(imageUrls.get(0), binding.productImageView);
+            uiManager.setProductImageViewVisibility(true);
         } else {
             uiManager.setProductImageViewVisibility(false);
         }

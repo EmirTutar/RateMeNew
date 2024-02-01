@@ -7,7 +7,7 @@
         android:id="@+id/usernameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Neuer Benutzername" />
+        android:hint="@string/new_user_name" />
 
     <Button
         android:id="@+id/okButton"
@@ -16,5 +16,5 @@
         android:layout_below="@id/usernameEditText"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="16dp"
-        android:text="OK" />
+        android:text="@string/ok" />
 </RelativeLayout>

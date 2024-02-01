@@ -1,6 +1,8 @@
 package RateMe.ScanActivity.RateProductActivity.Comment;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -21,10 +23,12 @@ import java.util.Map;
 public class CommentManager {
     private FirebaseFirestore db;
     private String currentProductTitle;
+    private Context context;
 
-    public CommentManager(String currentProductTitle) {
+    public CommentManager(String currentProductTitle, Context context) {
         this.db = FirebaseFirestore.getInstance();
         this.currentProductTitle = currentProductTitle;
+        this.context = context;
     }
 
     public void loadComments(CommentsAdapter commentsAdapter) {
@@ -69,16 +73,13 @@ public class CommentManager {
                         .add(comment)
                         .addOnSuccessListener(documentReference -> {
                             Log.d("CommentManager", "Comment added");
+                            Toast.makeText(context, "Comment added", Toast.LENGTH_SHORT).show();
                             loadComments(commentsAdapter); // Kommentare neu laden
                         })
-                        .addOnFailureListener(e -> {
-                            Log.w("CommentManager", "Error adding comment", e);
-                        });
+                        .addOnFailureListener(e -> Log.w("CommentManager", "Error adding comment", e));
             } else {
                 Log.d("CommentManager", "Document does not exist");
             }
-        }).addOnFailureListener(e -> {
-            Log.w("CommentManager", "Error getting document", e);
-        });
+        }).addOnFailureListener(e -> Log.w("CommentManager", "Error getting document", e));
     }
 }

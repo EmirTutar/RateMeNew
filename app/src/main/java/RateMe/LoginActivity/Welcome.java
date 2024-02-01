@@ -1,14 +1,19 @@
 package RateMe.LoginActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rateme.R;
 import com.google.firebase.auth.FirebaseAuth;
+
+/**
+ * Die Welcome-Klasse dient als Startbildschirm der Anwendung, der dem Benutzer die Optionen zum Einloggen oder Registrieren bietet.
+ * Sie leitet Benutzer je nach Auswahl zur Login- oder Registrierungsaktivität weiter.
+ * Die Klasse prüft auch, ob bereits ein Benutzer eingeloggt ist, und leitet ihn entsprechend zur Hauptaktivität weiter.
+ */
 
 public class Welcome extends AppCompatActivity {
 
@@ -25,35 +30,16 @@ public class Welcome extends AppCompatActivity {
 
         mAuth= FirebaseAuth.getInstance();
 
-        /*
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user!=null) {
-            Intent intent = new Intent(Welcome.this, MainActivity.class);
+        login.setOnClickListener(v -> {
+            Intent intent= new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
             finish();
-        }
-        else{
-            Intent intent = new Intent(Welcome.this, Welcome.class);
-            startActivity(intent);
-            finish();
-        }
-        */
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
-                finish();
-            }
         });
 
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Register.class);
-                startActivity(intent);
-                finish();
-            }
+        signup.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), Register.class);
+            startActivity(intent);
+            finish();
         });
     }
 }

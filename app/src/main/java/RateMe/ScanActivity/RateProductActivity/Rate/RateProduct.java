@@ -42,7 +42,7 @@ public class RateProduct extends AppCompatActivity {
         ratingManager = new RatingManager();
 
         currentProductTitle = getIntent().getStringExtra("PRODUCT_TITLE");
-        commentManager = new CommentManager(currentProductTitle);
+        commentManager = new CommentManager(currentProductTitle, this);
 
         RatingBar ratingBar = findViewById(R.id.ratingBar);
         Button submitButton = findViewById(R.id.btnSubmitRating);
@@ -50,22 +50,19 @@ public class RateProduct extends AppCompatActivity {
         submitButton.setOnClickListener(view -> {
             float rating = ratingBar.getRating();
             if (!currentProductTitle.isEmpty()) {
-                ratingManager.saveOrUpdateRating(currentProductTitle, rating, new RatingManager.RatingUpdateCallback() {
-                    @Override
-                    public void onRatingUpdated() {
-                        Toast.makeText(RateProduct.this, "Rating submitted", Toast.LENGTH_SHORT).show();
-                        finish();
-                        Intent intent = new Intent("com.example.rateme.RATING_UPDATED");
-                        intent.putExtra("productTitle", currentProductTitle);
-                        LocalBroadcastManager.getInstance(RateProduct.this).sendBroadcast(intent);
-                    }
+                ratingManager.saveOrUpdateRating(currentProductTitle, rating, () -> {
+                    Toast.makeText(RateProduct.this, "Rating submitted", Toast.LENGTH_SHORT).show();
+                    finish();
+                    Intent intent = new Intent("com.example.rateme.RATING_UPDATED");
+                    intent.putExtra("productTitle", currentProductTitle);
+                    LocalBroadcastManager.getInstance(RateProduct.this).sendBroadcast(intent);
                 });
             } else {
                 Toast.makeText(this, "No product title available", Toast.LENGTH_SHORT).show();
             }
         });
 
-        commentsAdapter = new CommentsAdapter(new ArrayList<>(), currentProductTitle);
+        commentsAdapter = new CommentsAdapter(new ArrayList<>(), currentProductTitle, this);
         RecyclerView commentsRecyclerView = findViewById(R.id.commentsRecyclerView);
         EditText commentEditText = findViewById(R.id.commentEditText);
         Button submitCommentButton = findViewById(R.id.submitCommentButton);

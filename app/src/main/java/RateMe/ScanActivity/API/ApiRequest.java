@@ -17,6 +17,22 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * Die Klasse ApiRequest ist zuständig für die Initiierung und Bearbeitung von API-Anfragen an einen Barcode-Suchdienst.
+ * Sie führt HTTP-Anfragen durch, um Produktinformationen basierend auf einem EAN-Code abzurufen. Diese Klasse verwendet
+ * den OkHttp-Client für Netzwerkanfragen und verarbeitet die JSON-Antwort, um notwendige Produktdetails und Bild-URLs zu extrahieren.
+ *
+ * Verwendung:
+ * - Um diese Klasse zu nutzen, ruft man`initiateApiRequest` mit einem EAN-Code und einem Callback auf.
+ * - Der Callback erhält die formatierten Produktdetails als String und eine Liste von Bild-URLs, falls das Produkt gefunden wurde.
+ * - Wenn das Produkt nicht gefunden wird oder ein Fehler in der API-Antwort vorliegt, erhält der Callback eine entsprechende Fehlermeldung.
+ *
+ * Die Klasse ermöglicht es:
+ * - Asynchrone API-Anfragen auf einem separaten Thread durchzuführen, um das Blockieren des UI-Threads zu vermeiden.
+ * - Produktdetails und Bild-URLs aus der JSON-Antwort zu extrahieren.
+ * - Die Ergebnisse über LiveData im Scan_Fragment zurück an die UI zu posten.
+ */
+
 public class ApiRequest {
 
     public interface ApiCallback {
@@ -37,6 +53,7 @@ public class ApiRequest {
             Log.d("ApiRequest", "API Request URL: " + request.url());
 
             try {
+                //noinspection resource
                 Response response = client.newCall(request).execute();
                 String result = response.body().string();
                 Log.d("ApiResponse", "API Response: " + result);
