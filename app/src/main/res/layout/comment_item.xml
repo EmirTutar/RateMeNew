@@ -4,14 +4,14 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:background="@drawable/background_image"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    android:padding="10dp"
+    >
 
     <TextView
         android:id="@+id/userNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_margin="5dp"
         android:textStyle="bold"
         android:textSize="16sp"
         android:text="Benutzername" />
@@ -21,7 +21,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="10dp"
         android:text="Hier steht der Kommentartext."
         android:textSize="14sp" />
 
@@ -30,8 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_delete"
-        android:layout_marginEnd="7dp"
-        android:layout_marginTop="7dp"
+        android:layout_gravity="end"
         android:background="@drawable/background_btn"
         android:visibility="gone" />
 

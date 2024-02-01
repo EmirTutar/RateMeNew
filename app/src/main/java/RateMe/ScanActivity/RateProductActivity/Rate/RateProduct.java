@@ -42,7 +42,7 @@ public class RateProduct extends AppCompatActivity {
         ratingManager = new RatingManager();
 
         currentProductTitle = getIntent().getStringExtra("PRODUCT_TITLE");
-        commentManager = new CommentManager(currentProductTitle);
+        commentManager = new CommentManager(currentProductTitle, this);
 
         RatingBar ratingBar = findViewById(R.id.ratingBar);
         Button submitButton = findViewById(R.id.btnSubmitRating);
@@ -65,7 +65,7 @@ public class RateProduct extends AppCompatActivity {
             }
         });
 
-        commentsAdapter = new CommentsAdapter(new ArrayList<>(), currentProductTitle);
+        commentsAdapter = new CommentsAdapter(new ArrayList<>(), currentProductTitle, this);
         RecyclerView commentsRecyclerView = findViewById(R.id.commentsRecyclerView);
         EditText commentEditText = findViewById(R.id.commentEditText);
         Button submitCommentButton = findViewById(R.id.submitCommentButton);

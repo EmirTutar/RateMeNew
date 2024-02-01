@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
+
+import RateMe.ScanActivity.RateProductActivity.Rate.RateProduct;
 
 /**
  * Der "CommentsAdapter" ist ein Adapter für ein RecyclerView, der die Darstellung von Kommentaren
@@ -25,10 +28,12 @@ import java.util.List;
 public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHolder> {
     private List<Comment> commentsList;
     private String currentProductTitle;
+    private RateProduct context;
 
-    public CommentsAdapter(List<Comment> commentsList, String currentProductTitle) {
+    public CommentsAdapter(List<Comment> commentsList, String currentProductTitle, RateProduct context) {
         this.currentProductTitle = currentProductTitle;
         this.commentsList = commentsList;
+        this.context = context;
     }
     public void setComments(List<Comment> commentsList) {
         this.commentsList = commentsList;
@@ -64,15 +69,14 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         db.collection("ProductRatings").document(currentProductTitle).collection("Comments")
-                .document(comment.getId()) // Verwenden Sie die ID, um das Dokument zu identifizieren
+                .document(comment.getId())
                 .delete()
                 .addOnSuccessListener(aVoid -> {
-                    // Kommentar erfolgreich gelöscht
                     commentsList.remove(position);
                     notifyItemRemoved(position);
+                    Toast.makeText(context, "Comment deleted", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
-                    // Fehlerbehandlung
                     Log.w("CommentsAdapter", "Error deleting comment", e);
                 });
     }

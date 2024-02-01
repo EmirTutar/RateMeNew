@@ -14,13 +14,11 @@ import com.example.rateme.databinding.ProfileBinding;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private ProfileBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ProfileBinding.inflate(getLayoutInflater());
+        com.example.rateme.databinding.ProfileBinding binding = ProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         final TextView username = binding.currentUserNameTextView;

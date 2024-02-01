@@ -38,9 +38,6 @@ public class MainActivity extends AppCompatActivity implements BarcodeScanner.On
     public static List<String> scannedProductDetails = new ArrayList<>();
     public static List<String> favouriteProductDetails = new ArrayList<>();
     private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
-    private BarcodeScanner barcodeScanner;
-    private NavigationManager navigationManager;
 
     public void onBarcodeScanResult(String result) {
         // Verarbeiten des Scanergebnisses
@@ -50,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements BarcodeScanner.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        com.example.rateme.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // Setup für die Navigation
@@ -58,8 +55,8 @@ public class MainActivity extends AppCompatActivity implements BarcodeScanner.On
         appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_scan).build();
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        barcodeScanner = new BarcodeScanner(this, this);
-        navigationManager = new NavigationManager(navController, findViewById(R.id.logout));
+        BarcodeScanner barcodeScanner = new BarcodeScanner(this, this);
+        NavigationManager navigationManager = new NavigationManager(navController, findViewById(R.id.logout));
     }
 
     @Override

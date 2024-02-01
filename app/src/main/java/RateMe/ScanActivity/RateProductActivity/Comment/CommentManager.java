@@ -1,16 +1,23 @@
 package RateMe.ScanActivity.RateProductActivity.Comment;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.zxing.client.android.Intents;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import RateMe.ScanActivity.RateProductActivity.Rate.RateProduct;
+import RateMe.ScanActivity.RateProductActivity.Rate.RatingManager;
+import RateMe.ScanActivity.Scan.ScanUIManager;
 
 /**
  * Der "CommentManager" verwaltet das Laden, Hinzufügen und Löschen von Kommentaren zu einem spezifischen Produkt.
@@ -21,10 +28,12 @@ import java.util.Map;
 public class CommentManager {
     private FirebaseFirestore db;
     private String currentProductTitle;
+    private Context context;
 
-    public CommentManager(String currentProductTitle) {
+    public CommentManager(String currentProductTitle, Context context) {
         this.db = FirebaseFirestore.getInstance();
         this.currentProductTitle = currentProductTitle;
+        this.context = context;
     }
 
     public void loadComments(CommentsAdapter commentsAdapter) {
@@ -69,6 +78,7 @@ public class CommentManager {
                         .add(comment)
                         .addOnSuccessListener(documentReference -> {
                             Log.d("CommentManager", "Comment added");
+                            Toast.makeText(context, "Comment added", Toast.LENGTH_SHORT).show();
                             loadComments(commentsAdapter); // Kommentare neu laden
                         })
                         .addOnFailureListener(e -> {

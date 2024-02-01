@@ -25,11 +25,7 @@ public class PermissionsActivity extends AppCompatActivity {
 
         switchCameraPermission = findViewById(R.id.switch_camera_permission);
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-            switchCameraPermission.setChecked(true);
-        } else {
-            switchCameraPermission.setChecked(false);
-        }
+        switchCameraPermission.setChecked(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED);
 
         switchCameraPermission.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
@@ -38,8 +34,6 @@ public class PermissionsActivity extends AppCompatActivity {
                         CAMERA_REQUEST_CODE);
             } else {
                 Toast.makeText(this, "Berechtigung kann hier nicht widerrufen werden", Toast.LENGTH_LONG).show();
-                Toast.makeText(this, "Bitte ändern Sie die App-Einstellungen", Toast.LENGTH_LONG).show();
-
                 switchCameraPermission.setChecked(true);
             }
         });

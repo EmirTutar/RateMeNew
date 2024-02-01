@@ -164,7 +164,7 @@ public class Register extends AppCompatActivity {
 
                                 //create in Firestore new User
                                 firebaseFirestore.collection("User")
-                                        .document(mAuth.getInstance().getUid())
+                                        .document(FirebaseAuth.getInstance().getUid())
                                         .set(new UserModel(user, email));
 
                                 progressDialog.cancel();
