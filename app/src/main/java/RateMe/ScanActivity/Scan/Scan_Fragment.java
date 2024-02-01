@@ -32,7 +32,7 @@ import RateMe.ScanActivity.RateProductActivity.Rate.RatingManager;
  * Diese Klasse ist verantwortlich für das Handling des Scan-Vorgangs,
  * Anzeigen von Produktdetails und Bildern und Interaktion mit anderen
  * Teilen der App wie Favoriten und Produktbewertungen.
- *
+ * <p>
  * Die Klasse nutzt MutableLiveData, um auf Änderungen der Produktdaten
  * zu reagieren und aktualisiert die UI entsprechend. Sie kommuniziert
  * mit verschiedenen Managern, um Aufgaben wie Bildladen und Datenmanagement

@@ -25,13 +25,13 @@ public class Welcome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intro_activity_welcome);
 
-        login=findViewById(R.id.welcomeButtonLogin);
-        signup=findViewById(R.id.welcomeButtonSignUp);
+        login = findViewById(R.id.welcomeButtonLogin);
+        signup = findViewById(R.id.welcomeButtonSignUp);
 
-        mAuth= FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
         login.setOnClickListener(v -> {
-            Intent intent= new Intent(getApplicationContext(), Login.class);
+            Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
             finish();
         });

@@ -28,9 +28,7 @@ import RateMe.ScanActivity.RateProductActivity.Comment.CommentsAdapter;
 
 public class RateProduct extends AppCompatActivity {
     private CommentsAdapter commentsAdapter;
-
     private CommentManager commentManager;
-
     private RatingManager ratingManager;
     private String currentProductTitle;
 

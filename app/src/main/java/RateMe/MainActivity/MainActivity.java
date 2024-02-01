@@ -33,7 +33,7 @@ import RateMe.ScanActivity.Scan.Scan_Fragment;
  * Zudem werden die Daten für die History und die Favoritenliste hier verwaltet.
  */
 
-public class MainActivity extends AppCompatActivity implements BarcodeScanner.OnBarcodeScanResultListener{
+public class MainActivity extends AppCompatActivity implements BarcodeScanner.OnBarcodeScanResultListener {
 
     public static List<String> scannedProductDetails = new ArrayList<>();
     public static List<String> favouriteProductDetails = new ArrayList<>();
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements BarcodeScanner.On
         // Verarbeiten des Scanergebnisses
         updateScannedProductDetails(result);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

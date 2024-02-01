@@ -34,7 +34,7 @@ import com.google.firebase.firestore.Query;
 public class Register extends AppCompatActivity {
 
     public static final String Tag = "Tag";
-    EditText editTextUsername ,editTextEmail, editTextPassword, editTextConfirmPassword;
+    EditText editTextUsername, editTextEmail, editTextPassword, editTextConfirmPassword;
     Button buttonReg;
     FirebaseAuth mAuth;
     FirebaseFirestore firebaseFirestore;
@@ -47,7 +47,7 @@ public class Register extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        progressDialog=new ProgressDialog(this);
+        progressDialog = new ProgressDialog(this);
     }
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
@@ -55,8 +55,8 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intro_activity_signup);
-        mAuth= FirebaseAuth.getInstance();
-        firebaseFirestore=FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         editTextUsername = findViewById(R.id.username);
@@ -66,7 +66,7 @@ public class Register extends AppCompatActivity {
         clickToLoginText = findViewById(R.id.clickToLogin);
 
         clickToLoginText.setOnClickListener(view -> {
-            Intent intent= new Intent(getApplicationContext(), Login.class);
+            Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
             finish();
         });
@@ -79,8 +79,8 @@ public class Register extends AppCompatActivity {
             user = editTextUsername.getText().toString();
             confirmPassword = editTextConfirmPassword.getText().toString();
 
-            Handler handler=new Handler();
-            handler.postDelayed(()-> progressBar.setVisibility(View.GONE), 2000);
+            Handler handler = new Handler();
+            handler.postDelayed(() -> progressBar.setVisibility(View.GONE), 2000);
 
             Query query = firebaseFirestore.collection("User")
                     .whereEqualTo("username", user);
@@ -94,37 +94,37 @@ public class Register extends AppCompatActivity {
                 }
             });
 
-            if(TextUtils.isEmpty(user)){
+            if (TextUtils.isEmpty(user)) {
                 Toast.makeText(Register.this, "Enter Username", Toast.LENGTH_SHORT).show();
                 editTextUsername.requestFocus();
                 return;
             }
 
-            if(TextUtils.isEmpty(email)){
+            if (TextUtils.isEmpty(email)) {
                 Toast.makeText(Register.this, "Enter Email", Toast.LENGTH_SHORT).show();
                 editTextEmail.requestFocus();
                 return;
             }
 
-            if(TextUtils.isEmpty(password)){
+            if (TextUtils.isEmpty(password)) {
                 Toast.makeText(Register.this, "Enter Password", Toast.LENGTH_SHORT).show();
                 editTextPassword.requestFocus();
                 return;
             }
 
-            if(password.length() < 6){
+            if (password.length() < 6) {
                 Toast.makeText(Register.this, "Password must be => 6 Characters", Toast.LENGTH_SHORT).show();
                 editTextPassword.requestFocus();
                 return;
             }
 
-            if(TextUtils.isEmpty(confirmPassword)){
+            if (TextUtils.isEmpty(confirmPassword)) {
                 Toast.makeText(Register.this, "Enter repeated Password", Toast.LENGTH_SHORT).show();
                 editTextConfirmPassword.requestFocus();
                 return;
             }
 
-            if(!TextUtils.equals(confirmPassword,password)){
+            if (!TextUtils.equals(confirmPassword, password)) {
                 Toast.makeText(Register.this, "Password have to be the same", Toast.LENGTH_SHORT).show();
                 editTextConfirmPassword.requestFocus();
                 editTextPassword.requestFocus();
@@ -135,7 +135,7 @@ public class Register extends AppCompatActivity {
             //create register account with firebase
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    FirebaseUser firebaseUser= mAuth.getCurrentUser();
+                    FirebaseUser firebaseUser = mAuth.getCurrentUser();
 
                     //send verification to email
                     firebaseUser.sendEmailVerification().addOnSuccessListener(unused -> Toast.makeText(Register.this, "Verification Email has been sent", Toast.LENGTH_SHORT).show()).addOnFailureListener(e -> Log.d(Tag, "onFailure: Email not sent " + e.getMessage()));
@@ -163,7 +163,7 @@ public class Register extends AppCompatActivity {
                     } else {
                         String errorMessage = exception.getMessage();
                         //noinspection StringOperationCanBeSimplified
-                        Toast.makeText(Register.this, "Error: "+ errorMessage.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Register.this, "Error: " + errorMessage.toString(), Toast.LENGTH_SHORT).show();
                     }
                     progressDialog.cancel();
                 }

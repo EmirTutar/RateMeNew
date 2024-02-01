@@ -35,10 +35,12 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
         this.commentsList = commentsList;
         this.context = context;
     }
+
     public void setComments(List<Comment> commentsList) {
         this.commentsList = commentsList;
         notifyDataSetChanged();
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

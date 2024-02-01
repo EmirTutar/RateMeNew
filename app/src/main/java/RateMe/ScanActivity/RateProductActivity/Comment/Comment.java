@@ -18,9 +18,14 @@ public class Comment {
         this.userEmail = userEmail;
     }
 
-    public String getId() { return id; }
+    public String getId() {
+        return id;
+    }
 
-    public void setId(String id) { this.id = id; }
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getUserName() {
         return userName;
     }
@@ -41,5 +46,7 @@ public class Comment {
         return userEmail;
     }
 
-    public void setEmail(String userEmail) { this.userEmail = userEmail;}
+    public void setEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
 }

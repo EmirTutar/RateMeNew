@@ -1,6 +1,7 @@
 package RateMe.SettingsActivity;
 
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rateme.R;

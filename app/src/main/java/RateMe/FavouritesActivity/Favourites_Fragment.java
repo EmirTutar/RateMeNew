@@ -12,9 +12,10 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import RateMe.MainActivity.MainActivity;
 import com.example.rateme.R;
 import com.example.rateme.databinding.ActivityFavouritesBinding;
+
+import RateMe.MainActivity.MainActivity;
 
 /**
  * Favourites ist ein Fragment, das die Lieblingsprodukte des Benutzers anzeigt.
@@ -47,14 +48,15 @@ public class Favourites_Fragment extends Fragment {
         FavouritesAdapter adapter = new FavouritesAdapter(MainActivity.favouriteProductDetails);
         recyclerView.setAdapter(adapter);
 
-
         return root;
     }
+
     public static void updateFavouritesList() {
         if (adapter != null) {
             adapter.updateFavouritesList(MainActivity.favouriteProductDetails);
         }
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

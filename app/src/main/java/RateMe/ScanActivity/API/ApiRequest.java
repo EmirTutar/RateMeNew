@@ -2,8 +2,6 @@ package RateMe.ScanActivity.API;
 
 import android.util.Log;
 
-import RateMe.ScanActivity.Scan.Scan_Fragment;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import RateMe.ScanActivity.Scan.Scan_Fragment;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -21,12 +20,12 @@ import okhttp3.Response;
  * Die Klasse ApiRequest ist zuständig für die Initiierung und Bearbeitung von API-Anfragen an einen Barcode-Suchdienst.
  * Sie führt HTTP-Anfragen durch, um Produktinformationen basierend auf einem EAN-Code abzurufen. Diese Klasse verwendet
  * den OkHttp-Client für Netzwerkanfragen und verarbeitet die JSON-Antwort, um notwendige Produktdetails und Bild-URLs zu extrahieren.
- *
+ * <p>
  * Verwendung:
  * - Um diese Klasse zu nutzen, ruft man`initiateApiRequest` mit einem EAN-Code und einem Callback auf.
  * - Der Callback erhält die formatierten Produktdetails als String und eine Liste von Bild-URLs, falls das Produkt gefunden wurde.
  * - Wenn das Produkt nicht gefunden wird oder ein Fehler in der API-Antwort vorliegt, erhält der Callback eine entsprechende Fehlermeldung.
- *
+ * <p>
  * Die Klasse ermöglicht es:
  * - Asynchrone API-Anfragen auf einem separaten Thread durchzuführen, um das Blockieren des UI-Threads zu vermeiden.
  * - Produktdetails und Bild-URLs aus der JSON-Antwort zu extrahieren.
@@ -87,6 +86,7 @@ public class ApiRequest {
             callback.onResultReceived("Error parsing API response, it looks like the API is down. You can try again later.");
         }
     }
+
     private static String extractRequiredAttributes(JSONObject jsonObject) {
         StringBuilder result = new StringBuilder();
         try {
@@ -109,14 +109,14 @@ public class ApiRequest {
             }
 
             if (jsonObject.has("brand")) {
-                if(jsonObject.getString("brand").equals("null")){
-                    if(jsonObject.has("manufacturer")){
-                        if(jsonObject.getString("manufacturer").equals("null")){
+                if (jsonObject.getString("brand").equals("null")) {
+                    if (jsonObject.has("manufacturer")) {
+                        if (jsonObject.getString("manufacturer").equals("null")) {
                             result.append("").append("").append("\n");
                             Log.d("ApiResponse", "Extracted Attribute: " + "No manufacturer");
-                        } else{
-                        result.append("Manufacturer: ").append(jsonObject.getString("manufacturer")).append("\n");
-                        Log.d("ApiResponse", "Extracted Attribute: " + jsonObject.getString("manufacturer"));
+                        } else {
+                            result.append("Manufacturer: ").append(jsonObject.getString("manufacturer")).append("\n");
+                            Log.d("ApiResponse", "Extracted Attribute: " + jsonObject.getString("manufacturer"));
                         }
                     }
 
@@ -130,6 +130,7 @@ public class ApiRequest {
         }
         return result.toString();
     }
+
     private static List<String> extractImageUrls(JSONObject jsonObject) {
         List<String> imageUrls = new ArrayList<>();
         try {

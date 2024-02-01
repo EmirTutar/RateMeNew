@@ -10,12 +10,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import RateMe.MainActivity.MainActivity;
 import com.example.rateme.R;
 import com.example.rateme.databinding.ActivityHistoryBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import RateMe.MainActivity.MainActivity;
 
 /**
  * History ist ein Fragment, das die Scanhistory des Benutzers anzeigt.
@@ -28,6 +29,7 @@ public class History_Fragment extends Fragment {
     private ActivityHistoryBinding binding;
     private HistoryAdapter adapter;
     private List<String> historyList = new ArrayList<>();
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 

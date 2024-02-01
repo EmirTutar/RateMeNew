@@ -9,7 +9,7 @@ import java.util.Scanner;
  * innerhalb des Scan_Fragments. Die Hauptaufgaben dieser Klasse sind
  * das Extrahieren und die Aufbereitung von Produktdetails aus den
  * API-Antworten.
- *
+ * <p>
  * Diese Klasse bietet Methoden, um Produkttitel und Bild-URLs aus
  * einem gegebenen Datenstring zu extrahieren.
  */

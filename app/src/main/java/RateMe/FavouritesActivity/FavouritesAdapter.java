@@ -18,7 +18,6 @@ import java.util.List;
  * stellt diese in der RecyclerView dar. Der Adapter ermöglicht es auch, Produkte aus der Liste zu entfernen.
  */
 
-
 public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.ViewHolder> {
     private List<String> favouritesList;
 
@@ -43,7 +42,8 @@ public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.Vi
                 favouritesList.remove(currentPosition);
                 notifyItemRemoved(currentPosition);
                 notifyItemRangeChanged(currentPosition, favouritesList.size());
-            }});
+            }
+        });
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -61,6 +61,7 @@ public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.Vi
     public int getItemCount() {
         return favouritesList.size();
     }
+
     public void updateFavouritesList(List<String> newFavourites) {
         this.favouritesList = newFavourites;
         notifyDataSetChanged();

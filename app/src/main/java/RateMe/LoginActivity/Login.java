@@ -14,10 +14,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import RateMe.MainActivity.MainActivity;
 import com.example.rateme.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import RateMe.MainActivity.MainActivity;
 
 /**
  * Die Login-Klasse ermöglicht es Benutzern, sich mit ihren Anmeldedaten einzuloggen.
@@ -45,7 +46,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intro_activity_login);
-        mAuth= FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.emailLogin);
         editTextPassword = findViewById(R.id.passwordLogin);
         buttonLogin = findViewById(R.id.buttonLogin);
@@ -54,7 +55,7 @@ public class Login extends AppCompatActivity {
         forgetPasswordText = findViewById(R.id.forgetYourPassword);
 
         clickToRegisterText.setOnClickListener(view -> {
-            Intent intent= new Intent(getApplicationContext(), Register.class);
+            Intent intent = new Intent(getApplicationContext(), Register.class);
             startActivity(intent);
             finish();
         });
@@ -74,15 +75,15 @@ public class Login extends AppCompatActivity {
             password = editTextPassword.getText().toString();
 
             //delete Progressbar after 2000 delayMillis
-            Handler handler=new Handler();
-            handler.postDelayed(()-> progressBar.setVisibility(View.GONE), 2000);
+            Handler handler = new Handler();
+            handler.postDelayed(() -> progressBar.setVisibility(View.GONE), 2000);
 
             // Nachricht wenn Felder leer sind
-            if(TextUtils.isEmpty(email)){
+            if (TextUtils.isEmpty(email)) {
                 Toast.makeText(Login.this, "Enter Email", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if(TextUtils.isEmpty(password)){
+            if (TextUtils.isEmpty(password)) {
                 Toast.makeText(Login.this, "Enter Password", Toast.LENGTH_SHORT).show();
                 return;
             }
