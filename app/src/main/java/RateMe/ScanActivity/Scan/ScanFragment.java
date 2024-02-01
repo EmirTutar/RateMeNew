@@ -72,6 +72,7 @@ public class ScanFragment extends Fragment {
         setupImageLoader();
         setupRatingManager();
 
+        //noinspection DataFlowIssue
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(ratingUpdateReceiver, new IntentFilter("com.example.rateme.RATING_UPDATED"));
 
         setupButtons();
@@ -152,6 +153,7 @@ public class ScanFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        //noinspection DataFlowIssue
         LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(ratingUpdateReceiver);
         binding = null;
     }

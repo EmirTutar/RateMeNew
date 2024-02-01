@@ -18,6 +18,7 @@ import java.util.Map;
  * Der "CommentManager" verwaltet das Laden, Hinzufügen und Löschen von Kommentaren zu einem spezifischen Produkt.
  * Kommentare werden in der Firebase Firestore-Datenbank gespeichert und abgerufen.
  * Diese Klasse sorgt dafür, dass Benutzer mit den Kommentaren interagieren können.
+ * @noinspection DataFlowIssue
  */
 
 public class CommentManager {
@@ -57,8 +58,10 @@ public class CommentManager {
     public void submitComment(String commentText, CommentsAdapter commentsAdapter) {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         String userId = firebaseAuth.getUid();
+        //noinspection DataFlowIssue
         String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
+        //noinspection DataFlowIssue
         DocumentReference userRef = db.collection("User").document(userId);
         userRef.get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists()) {

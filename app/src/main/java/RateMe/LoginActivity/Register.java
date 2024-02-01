@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +30,7 @@ import com.google.firebase.firestore.Query;
  * Sie erfasst Benutzerinformationen wie Benutzername, E-Mail und Passwort und verwendet Firebase Authentication,
  * um das Konto zu erstellen und eine E-Mail-Verifizierung zu senden. Die Klasse führt auch eine Validierung
  * der Eingabedaten durch und zeigt Fortschrittsdialoge während des Registrierungsprozesses an.
+ * @noinspection deprecation
  */
 
 public class Register extends AppCompatActivity {
@@ -50,6 +52,7 @@ public class Register extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
     }
 
+    /** @noinspection DataFlowIssue */
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +82,7 @@ public class Register extends AppCompatActivity {
             user = editTextUsername.getText().toString();
             confirmPassword = editTextConfirmPassword.getText().toString();
 
-            Handler handler = new Handler();
+            Handler handler = new Handler(Looper.getMainLooper());
             handler.postDelayed(() -> progressBar.setVisibility(View.GONE), 2000);
 
             Query query = firebaseFirestore.collection("User")

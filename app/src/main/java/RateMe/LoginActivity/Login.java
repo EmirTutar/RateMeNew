@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +28,6 @@ import RateMe.MainActivity.MainActivity;
  */
 
 public class Login extends AppCompatActivity {
-
     EditText editTextEmail, editTextPassword;
     Button buttonLogin;
     FirebaseAuth mAuth;
@@ -40,7 +40,6 @@ public class Login extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +59,6 @@ public class Login extends AppCompatActivity {
             finish();
         });
 
-
         forgetPasswordText.setOnClickListener(v -> {
             String email = editTextEmail.getText().toString();
             mAuth.sendPasswordResetEmail(email)
@@ -74,8 +72,7 @@ public class Login extends AppCompatActivity {
             email = editTextEmail.getText().toString();
             password = editTextPassword.getText().toString();
 
-            //delete Progressbar after 2000 delayMillis
-            Handler handler = new Handler();
+            Handler handler = new Handler(Looper.getMainLooper());
             handler.postDelayed(() -> progressBar.setVisibility(View.GONE), 2000);
 
             // Nachricht wenn Felder leer sind
@@ -129,9 +126,7 @@ public class Login extends AppCompatActivity {
             passwordResetDialog.setNegativeButton("Close", (dialog, which) -> {
                 //close the dialog
             });
-
             passwordResetDialog.create().show();
         });
-
     }
 }

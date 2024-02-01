@@ -27,6 +27,7 @@ public class SettingsFragment extends Fragment {
         ListView settingsList = view.findViewById(R.id.settings_list);
         String[] settingsOptions = {"Profile", "Permissions", "About Us"};
 
+        //noinspection DataFlowIssue
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_list_item_1, settingsOptions);
         settingsList.setAdapter(adapter);

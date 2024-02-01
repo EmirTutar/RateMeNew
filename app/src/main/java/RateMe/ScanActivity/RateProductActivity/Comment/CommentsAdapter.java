@@ -48,6 +48,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
         return new ViewHolder(view);
     }
 
+    /** @noinspection DataFlowIssue*/
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Comment comment = commentsList.get(position);

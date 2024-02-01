@@ -54,6 +54,7 @@ public class ApiRequest {
             try {
                 //noinspection resource
                 Response response = client.newCall(request).execute();
+                assert response.body() != null; // response.body() can be null if the response is unsuccessful
                 String result = response.body().string();
                 Log.d("ApiResponse", "API Response: " + result);
                 processApiResponse(result, callback);
