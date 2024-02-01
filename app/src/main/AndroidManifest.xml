@@ -38,7 +38,6 @@
         <activity
             android:name="RateMe.ScanActivity.RateProductActivity.Rate.RateProduct">
         </activity>
-        <activity android:name="RateMe.SettingsActivity.SettingsFragment" />
         <activity android:name="RateMe.SettingsActivity.ProfileActivity" />
         <activity android:name="RateMe.SettingsActivity.PermissionsActivity" />
         <activity android:name="RateMe.SettingsActivity.AboutUsActivity" />
