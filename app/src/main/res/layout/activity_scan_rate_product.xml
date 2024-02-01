@@ -47,10 +47,10 @@
         android:id="@+id/submitCommentButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/submit_comment"
         android:layout_below="@id/commentEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:text="@string/submit_comment" />
 
     <!-- RecyclerView für Kommentare -->
     <androidx.recyclerview.widget.RecyclerView

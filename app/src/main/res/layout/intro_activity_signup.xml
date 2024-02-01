@@ -14,8 +14,8 @@
         android:layout_marginTop="30dp"
         android:text="@string/SignUpUpperCase"
         android:textColor="@color/white"
-        android:textStyle="bold"
         android:textSize="65sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +111,6 @@
 
         <Button
             android:id="@+id/buttonSignUp"
-            android:background="@drawable/background_btn_intro"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -119,6 +118,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="8dp"
+            android:background="@drawable/background_btn_intro"
             android:text="@string/SignUpUpperCase"
             android:textColor="#ffffff"
             android:textSize="24sp"

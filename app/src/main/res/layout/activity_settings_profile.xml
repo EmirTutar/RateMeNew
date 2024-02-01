@@ -32,9 +32,8 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_user"
                 android:contentDescription="@string/user_icon"
-                />
+                android:src="@drawable/ic_user" />
 
             <TextView
                 android:id="@+id/currentUserNameTextView"
@@ -51,8 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/email_address"
-                />
+                android:text="@string/email_address" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -83,9 +81,8 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:padding="12sp"
                         android:contentDescription="@string/benutzer_field"
-                        />
+                        android:padding="12sp" />
                 </RelativeLayout>
             </LinearLayout>
 
