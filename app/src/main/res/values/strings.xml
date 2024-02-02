@@ -49,4 +49,7 @@
     <string name="settings">Settings</string>
     <string name="delete_button2">Delete button</string>
     <string name="loading">Loading...</string>
+    <string name="scan">Scan</string>
+    <string name="comments_and_ratings">Rate and Comment</string>
+    <string name="comments">Comments</string>
 </resources>

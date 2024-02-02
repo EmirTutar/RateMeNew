@@ -33,7 +33,9 @@
         <activity
             android:name="RateMe.MainActivity.MainActivity"
             android:exported="true" />
-        <activity android:name="RateMe.ScanActivity.RateProductActivity.Rate.RateProduct"/>
+        <activity
+            android:name="RateMe.ScanActivity.RateProductActivity.Rate.RateProduct"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name="RateMe.SettingsActivity.ProfileActivity" />
         <activity android:name="RateMe.SettingsActivity.PermissionsActivity" />
         <activity android:name="RateMe.SettingsActivity.AboutUsActivity" />
