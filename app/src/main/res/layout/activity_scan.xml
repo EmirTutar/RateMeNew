@@ -1,168 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="RateMe.ScanActivity.Scan.ScanFragment">
 
-    <FrameLayout
-        android:id="@+id/frameLayoutProductImage"
+    <TextView
+        android:id="@+id/textViewHeadline"
         android:layout_width="match_parent"
-        android:layout_height="288dp"
-        android:layout_margin="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/productImageView"
-            android:layout_width="match_parent"
-            android:layout_height="288dp"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/product_image"
-            android:scaleType="fitCenter"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/noImageTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/no_image_available"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <ImageButton
-            android:id="@+id/button_add_to_favourites"
-            android:layout_width="52dp"
-            android:layout_height="48dp"
-            android:layout_gravity="bottom|end"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/background_image"
-            android:contentDescription="@string/adds_product_to_favourites"
-            android:src="@drawable/ic_favourites"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/ImageView"
-            app:tint="@color/green" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/background_image" />
-
-    </FrameLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/frameLayoutProductImage"
-        app:layout_constraintEnd_toEndOf="@+id/frameLayoutProductImage"
-        app:layout_constraintStart_toStartOf="@+id/frameLayoutProductImage"
-        app:layout_constraintTop_toTopOf="@+id/frameLayoutProductImage" />
-
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/frameLayoutProductDetails"
-        app:layout_constraintEnd_toEndOf="@+id/frameLayoutProductDetails"
-        app:layout_constraintStart_toStartOf="@+id/frameLayoutProductDetails"
-        app:layout_constraintTop_toTopOf="@+id/frameLayoutProductDetails" />
-
-    <FrameLayout
-        android:id="@+id/frameLayoutProductDetails"
-        android:layout_width="match_parent"
-        android:layout_height="288dp"
-        android:layout_margin="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/background_headlines"
         android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        android:text="@string/scan"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frameLayoutProductImage">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/product_details"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="10dp"
-            android:lineSpacingExtra="3sp"
-            android:scrollbarStyle="insideInset"
-            android:scrollbars="vertical"
-            android:text="@string/scan_a_product"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAverageRating" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textViewAverageRating"
-            android:layout_width="336dp"
-            android:layout_height="29dp"
-            android:layout_margin="11dp"
-            android:text="@string/average_rating"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.054"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/frameLayoutProductImage" />
+            <FrameLayout
+                android:id="@+id/frameLayoutProductImage"
+                android:layout_width="match_parent"
+                android:layout_height="288dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.454"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <RatingBar
-            android:id="@+id/RatingBarShowRating"
-            android:layout_width="241dp"
-            android:layout_height="41dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginBottom="10dp"
-            android:isIndicator="true"
-            android:numStars="5"
-            android:rating="0"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
-            android:stepSize="1"
-            app:layout_constraintEnd_toEndOf="@+id/textViewAverageRating"
-            app:layout_constraintTop_toBottomOf="@+id/frameLayoutProductImage" />
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/background_image" />
+                <ImageView
+                    android:id="@+id/productImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="288dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/product_image"
+                    android:scaleType="fitCenter"
+                    android:visibility="gone" />
 
-    </FrameLayout>
+                <TextView
+                    android:id="@+id/noImageTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/no_image_available"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnRateProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="72dp"
-        android:text="@string/rate_product"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayoutProductDetails" />
+                <ImageButton
+                    android:id="@+id/button_add_to_favourites"
+                    android:layout_width="52dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/background_image"
+                    android:contentDescription="@string/adds_product_to_favourites"
+                    android:src="@drawable/ic_favourites"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="@+id/ImageView"
+                    app:tint="@color/green" />
 
-    <Button
-        android:id="@+id/scanButton"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="72dp"
-        android:text="@string/scan_barcode"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayoutProductDetails" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background_image" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frameLayoutProductDetails"
+                android:layout_width="match_parent"
+                android:layout_height="288dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.516"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/frameLayoutProductImage">
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/product_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="3sp"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:text="@string/scan_a_product"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewAverageRating" />
+
+                <TextView
+                    android:id="@+id/textViewAverageRating"
+                    android:layout_width="336dp"
+                    android:layout_height="29dp"
+                    android:layout_margin="11dp"
+                    android:text="@string/average_rating"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.054"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frameLayoutProductImage"
+                    tools:ignore="TextSizeCheck" />
+
+                <RatingBar
+                    android:id="@+id/RatingBarShowRating"
+                    android:layout_width="241dp"
+                    android:layout_height="41dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginBottom="10dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:rating="0"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"
+                    android:stepSize="0.5"
+                    app:layout_constraintEnd_toEndOf="@+id/textViewAverageRating"
+                    app:layout_constraintTop_toBottomOf="@+id/frameLayoutProductImage" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background_image" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btnRateProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="72dp"
+                    android:text="@string/rate_product"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:id="@+id/scanButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="36dp"
+                    android:layout_marginBottom="72dp"
+                    android:text="@string/scan_barcode" />
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
