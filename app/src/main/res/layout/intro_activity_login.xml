@@ -20,7 +20,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:layout_width="224dp"
+        android:layout_height="219dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/user_icon"
+        android:src="@drawable/Mobile_login_bro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRateMe" />
+
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
@@ -112,4 +123,5 @@
             android:textStyle="bold" />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
