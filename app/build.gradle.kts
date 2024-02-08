@@ -51,6 +51,11 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:22.3.0")
     implementation("com.google.firebase:firebase-firestore:24.10.0")
 
+    implementation("com.vanniktech:android-image-cropper:4.5.0")
+    implementation("de.hdodenhof:circleimageview:3.0.0")
+    implementation("com.google.firebase:firebase-storage:20.3.0")
+    implementation("com.squareup.picasso:picasso:2.5.2")
+
     implementation ("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("androidx.preference:preference:1.2.0")
     implementation("com.google.firebase:firebase-database:20.3.0")
