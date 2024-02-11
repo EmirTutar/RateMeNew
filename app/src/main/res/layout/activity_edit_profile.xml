@@ -11,45 +11,49 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="70dp"
         android:src="@drawable/ic_user"
         />
-    
+
     <TextView
         android:id="@+id/change_profile_text"
         android:layout_below="@+id/profile_image"
-        android:text="Change Text"
+        android:text="Change Profile Picture"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
         android:textSize="16sp"
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    
+
     <LinearLayout
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:layout_margin="16dp"
-        android:layout_below="@id/change_profile_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        
+        android:layout_height="wrap_content"
+        android:layout_below="@id/change_profile_text"
+        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
         <Button
             android:id="@+id/button_close_picture"
+            style="bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Close"
+            android:layout_marginRight="6dp"
             android:layout_weight="1"
-            style="bold"
-            android:layout_marginRight="6dp"/>
+            android:text="Close" />
+
         <Button
             android:id="@+id/button_save_picture"
+            style="bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Save"
+            android:layout_marginLeft="6dp"
             android:layout_weight="1"
-            style="bold"
-            android:layout_marginLeft="6dp"/>
+            android:text="Save" />
     </LinearLayout>
 
 
