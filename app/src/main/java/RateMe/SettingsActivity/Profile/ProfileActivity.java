@@ -1,4 +1,4 @@
-package RateMe.SettingsActivity;
+package RateMe.SettingsActivity.Profile;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -18,7 +18,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import RateMe.LoginActivity.UserModel;
-import RateMe.MainActivity.MainActivity;
 
 /**
  * Zeigt Benutzerinformationen wie Benutzername und E-Mail an. Erlaubt das Anzeigen und
@@ -27,8 +26,10 @@ import RateMe.MainActivity.MainActivity;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    /** @noinspection DataFlowIssue*/
-    Uri selectedImageUri;
+    /**
+     * @noinspection DataFlowIssue
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,12 +57,11 @@ public class ProfileActivity extends AppCompatActivity {
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("profile_picture").child(userId);
         storageReference.getDownloadUrl().addOnCompleteListener(task -> {
-            if(task.isSuccessful()){
+            if (task.isSuccessful()) {
                 Uri uri = task.getResult();
                 UserModel.setProfilePic(getBaseContext(), uri, profilePicture);
             }
         });
-
 
         buttonEdit.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), EditProfile.class);
@@ -69,6 +69,4 @@ public class ProfileActivity extends AppCompatActivity {
             finish();
         });
     }
-
-
 }

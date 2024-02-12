@@ -1,12 +1,11 @@
 package RateMe.LoginActivity;
 
+import android.content.Context;
 import android.net.Uri;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-
-import android.content.Context;
 
 
 /**
@@ -18,10 +17,6 @@ import android.content.Context;
 public class UserModel {
 
     String username, email;
-
-    public UserModel() {
-
-    }
 
     public UserModel(String username, String email) {
         this.username = username;
@@ -44,7 +39,7 @@ public class UserModel {
         this.email = email;
     }
 
-    public static void setProfilePic(Context context, Uri imageUri, ImageView imageView){
+    public static void setProfilePic(Context context, Uri imageUri, ImageView imageView) {
         Glide.with(context).load(imageUri).apply(RequestOptions.circleCropTransform()).into(imageView);
     }
 }

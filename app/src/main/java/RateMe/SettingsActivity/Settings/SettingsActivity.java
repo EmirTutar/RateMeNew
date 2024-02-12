@@ -1,4 +1,4 @@
-package RateMe.SettingsActivity;
+package RateMe.SettingsActivity.Settings;
 
 import android.os.Bundle;
 

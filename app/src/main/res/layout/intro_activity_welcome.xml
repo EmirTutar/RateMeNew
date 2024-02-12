@@ -7,70 +7,79 @@
     android:background="@drawable/background_intro"
     tools:context="RateMe.MainActivity.MainActivity">
 
-    <TextView
-        android:id="@+id/textViewRateMe"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="@string/rateMe"
-        android:textColor="@color/white"
-        android:textSize="65sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRateMe"
-        app:layout_constraintVertical_bias="0.887">
-
-        <Button
-            android:id="@+id/welcomeButtonLogin"
-            android:layout_width="342dp"
+        <LinearLayout
+            android:id="@+id/linearLayoutWelcome"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/background_btn_intro"
-            android:text="@string/loginLowerCase"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRateMe">
 
-        <Button
-            android:id="@+id/welcomeButtonSignUp"
-            android:layout_width="342dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/background_btn_intro"
-            android:text="@string/signUpLowercase"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textViewRateMe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:text="@string/rateMe"
+                android:textColor="@color/white"
+                android:textSize="65sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="419dp"
-        android:layout_height="285dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRateMe"
-        app:layout_constraintVertical_bias="0.439"
-        app:srcCompat="@drawable/welcome_app_picture_removebg" />
+            <ImageView
+                android:id="@+id/image_welcome"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:contentDescription="@string/welcome_picture"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayoutWelcome"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRateMe"
+                app:layout_constraintVertical_bias="0.439"
+                app:srcCompat="@drawable/ic_welcome"
+                tools:ignore="ImageContrastCheck" />
 
+            <Button
+                android:id="@+id/welcomeButtonLogin"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/background_btn_intro"
+                android:text="@string/loginLowerCase"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
 
+            <Button
+                android:id="@+id/welcomeButtonSignUp"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/background_btn_intro"
+                android:text="@string/signUpLowercase"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
