@@ -27,9 +27,11 @@ import com.google.firebase.firestore.Query;
 
 /**
  * Die Register-Klasse ermöglicht es neuen Benutzern, ein Konto zu erstellen.
- * Sie erfasst Benutzerinformationen wie Benutzername, E-Mail und Passwort und verwendet Firebase Authentication,
- * um das Konto zu erstellen und eine E-Mail-Verifizierung zu senden. Die Klasse führt auch eine Validierung
+ * Sie erfasst Benutzerinformationen wie Benutzername, E-Mail und Passwort und
+ * verwendet Firebase Authentication,um das Konto zu erstellen und
+ * eine E-Mail-Verifizierung zu senden. Die Klasse führt auch eine Validierung
  * der Eingabedaten durch und zeigt Fortschrittsdialoge während des Registrierungsprozesses an.
+ *
  * @noinspection deprecation
  */
 
@@ -52,7 +54,9 @@ public class Register extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
     }
 
-    /** @noinspection DataFlowIssue */
+    /**
+     * @noinspection DataFlowIssue
+     */
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {

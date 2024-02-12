@@ -1,4 +1,4 @@
-package RateMe.SettingsActivity;
+package RateMe.SettingsActivity.Settings;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,10 @@ import android.widget.ListView;
 import androidx.fragment.app.Fragment;
 
 import com.example.rateme.R;
+
+import RateMe.SettingsActivity.AboutUsActivity;
+import RateMe.SettingsActivity.PermissionsActivity;
+import RateMe.SettingsActivity.Profile.ProfileActivity;
 
 /**
  * Zeigt eine Liste von Einstellungsoptionen an. Nutzer können von hier aus zu den

@@ -51,6 +51,12 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:22.3.0")
     implementation("com.google.firebase:firebase-firestore:24.10.0")
 
+    implementation("com.github.dhaval2404:imagepicker:2.1")
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation("de.hdodenhof:circleimageview:3.0.0")
+    implementation("com.google.firebase:firebase-storage:20.3.0")
+    implementation("com.squareup.picasso:picasso:2.5.2")
+
     implementation ("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("androidx.preference:preference:1.2.0")
     implementation("com.google.firebase:firebase-database:20.3.0")

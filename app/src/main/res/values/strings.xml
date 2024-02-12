@@ -52,4 +52,10 @@
     <string name="scan">Scan</string>
     <string name="comments_and_ratings">Rate and Comment</string>
     <string name="comments">Comments</string>
+    <string name="welcome_picture">Welcome Picture</string>
+    <string name="signupimage">SignUpImage</string>
+    <string name="loginimage">LoginImage</string>
+    <string name="close">Close</string>
+    <string name="save">Save</string>
+    <string name="change_profile">Change Profile Picture</string>
 </resources>
