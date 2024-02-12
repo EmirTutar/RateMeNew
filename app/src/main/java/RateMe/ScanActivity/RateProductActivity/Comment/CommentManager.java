@@ -44,9 +44,8 @@ public class CommentManager {
                             String userName = document.getString("userName");
                             String text = document.getString("text");
                             String userEmail = document.getString("userEmail");
-                            String profilePicUrl = document.getString("profilePicUrl");
 
-                            Comment comment = new Comment(id, userName, text, userEmail, profilePicUrl);
+                            Comment comment = new Comment(id, userName, text, userEmail);
                             comments.add(comment);
                         }
                         commentsAdapter.setComments(comments);
@@ -61,7 +60,6 @@ public class CommentManager {
         String userId = firebaseAuth.getUid();
         //noinspection DataFlowIssue
         String userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        String profilePicUrl = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString();
 
         //noinspection DataFlowIssue
         DocumentReference userRef = db.collection("User").document(userId);
@@ -73,7 +71,6 @@ public class CommentManager {
                 comment.put("userName", userName);
                 comment.put("userEmail", userEmail);
                 comment.put("text", commentText);
-                comment.put("profilePicUrl", profilePicUrl);
 
                 db.collection("ProductRatings").document(currentProductTitle).collection("Comments")
                         .add(comment)
