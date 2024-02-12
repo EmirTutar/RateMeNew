@@ -4,12 +4,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.rateme.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -55,6 +57,15 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
         holder.commentTextView.setText(comment.getText());
         holder.userNameTextView.setText(comment.getUserName());
 
+        if (comment.getProfilePicUrl() != null && !comment.getProfilePicUrl().isEmpty()) {
+            Glide.with(holder.itemView.getContext())
+                    .load(comment.getProfilePicUrl())
+                    .placeholder(R.drawable.ic_user)
+                    .into(holder.profileImageView);
+        }else {
+            holder.profileImageView.setImageResource(R.drawable.ic_user);
+        }
+
         // Überprüfen, ob der eingeloggte Benutzer der Autor des Kommentars ist
         if (FirebaseAuth.getInstance().getCurrentUser() != null &&
                 FirebaseAuth.getInstance().getCurrentUser().getEmail().equals(comment.getEmail())) {
@@ -88,12 +99,14 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView commentTextView;
         public TextView userNameTextView;
+        public ImageView profileImageView;
         public View deleteButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
             commentTextView = itemView.findViewById(R.id.commentTextView);
             userNameTextView = itemView.findViewById(R.id.userNameTextView);
+            profileImageView = itemView.findViewById(R.id.profileImageView);
             deleteButton = itemView.findViewById(R.id.deleteButton);
         }
     }

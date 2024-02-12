@@ -20,7 +20,7 @@ import com.google.firebase.storage.StorageReference;
 import RateMe.LoginActivity.UserModel;
 
 /**
- * Zeigt Benutzerinformationen wie Benutzername und E-Mail an. Erlaubt das Anzeigen und
+ * Zeigt Benutzerinformationen wie z.B. Benutzername und E-Mail an. Erlaubt das Anzeigen und
  * eventuelle Bearbeiten von Benutzerprofilinformationen.
  */
 

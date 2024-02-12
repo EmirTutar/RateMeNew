@@ -10,12 +10,14 @@ public class Comment {
     private String userName;
     private String text;
     private String userEmail;
+    private String profilePicUrl;
 
-    public Comment(String id, String userName, String text, String userEmail) {
+    public Comment(String id, String userName, String text, String userEmail, String profilePicUrl) {
         this.id = id;
         this.userName = userName;
         this.text = text;
         this.userEmail = userEmail;
+        this.profilePicUrl = profilePicUrl;
     }
 
     public String getId() {
@@ -49,4 +51,8 @@ public class Comment {
     public void setEmail(String userEmail) {
         this.userEmail = userEmail;
     }
+
+    public String getProfilePicUrl() { return profilePicUrl; }
+
+    public void setProfilePicUrl(String profilePicUrl) { this.profilePicUrl = profilePicUrl; }
 }
