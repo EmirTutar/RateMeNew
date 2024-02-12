@@ -66,6 +66,7 @@ public class ProfileActivity extends AppCompatActivity {
         buttonEdit.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), EditProfile.class);
             startActivity(intent);
+            finish();
         });
     }
 

@@ -71,6 +71,14 @@ public class EditProfile extends AppCompatActivity {
         saveButton = findViewById(R.id.button_save_picture);
         profilePicture = findViewById(R.id.profile_image);
 
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("profile_picture").child(userId);
+        storageReference.getDownloadUrl().addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                Uri uri = task.getResult();
+                UserModel.setProfilePic(getBaseContext(), uri, profilePicture);
+            }
+        });
+
         imagePickLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 result -> {
                     if(result.getResultCode() == Activity.RESULT_OK){
@@ -94,7 +102,6 @@ public class EditProfile extends AppCompatActivity {
         });
 
         saveButton.setOnClickListener(v -> {
-            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("profile_picture").child(userId);
             if(selectedImageUri!=null){
                 storageReference.putFile(selectedImageUri)
                         .addOnCompleteListener(task -> {
@@ -105,6 +112,12 @@ public class EditProfile extends AppCompatActivity {
                             finish();
                         });
             }
+        });
+
+        closeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
 
