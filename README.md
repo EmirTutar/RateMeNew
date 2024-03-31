@@ -42,5 +42,9 @@ Für Fragen und Unterstützung kontaktieren Sie bitte [Emircan Tutar] über [emi
 
 ## Copyright
 
-Copyright © 2024 Emircan Tutar, Leon Muss. Alle Rechte vorbehalten.
+Copyright (c) 2024, Emircan Tutar
+All rights reserved.
+
+Dieses Werk und alle seine Inhalte, einschließlich, aber nicht beschränkt auf, den Programmcode, Texte, Bilder und Daten, sind das alleinige Eigentum von Emircan Tutar. Ohne die ausdrückliche schriftliche Zustimmung ist es nicht gestattet, dieses Werk oder Teile davon in irgendeiner Form zu kopieren, zu modifizieren, zu verbreiten, zu veröffentlichen oder zu übertragen, sei es elektronisch oder auf andere Weise. Jegliche unbefugte Nutzung, Vervielfältigung oder Verbreitung ist strengstens untersagt und wird nach geltendem Recht verfolgt.
+
 
