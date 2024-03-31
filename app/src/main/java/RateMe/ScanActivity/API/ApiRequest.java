@@ -45,7 +45,7 @@ public class ApiRequest {
             Request request = new Request.Builder()
                     .url("https://barcodes1.p.rapidapi.com/?query=" + eanCode)
                     .get()
-                    .addHeader("X-RapidAPI-Key", "API-KEY") //Kontaktiere die Projekt-Entwickler für ein Key
+                    .addHeader("X-RapidAPI-Key", "API-KEY") //Kontaktiere die Projekt-Entwickler für ein neuen Key
                     .addHeader("X-RapidAPI-Host", "barcodes1.p.rapidapi.com")
                     .build();
 
